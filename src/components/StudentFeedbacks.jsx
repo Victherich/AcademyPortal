@@ -111,7 +111,7 @@ const StudentFeedbacks = () => {
 
   const fetchAnnouncements = async () => {
     try {
-      const response = await fetch(`https://hotsalesng.com/ephad_api/fetch_students_feedbacks.php`);
+      const response = await fetch(`https://ephadacademyportal.com.ng/ephad_api/fetch_students_feedbacks.php`);
       const data = await response.json();
       if (data.success) {
         setAnnouncements(data.student_feedbacks);
@@ -140,7 +140,7 @@ const StudentFeedbacks = () => {
         Swal.fire({text:"Please wait..."})
         Swal.showLoading(); 
     try {
-      const response = await fetch(`https://hotsalesng.com/ephad_api/student_create_feedback.php`, {
+      const response = await fetch(`https://ephadacademyportal.com.ng/ephad_api/student_create_feedback.php`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
@@ -170,7 +170,7 @@ const StudentFeedbacks = () => {
     e.preventDefault();
     Swal.fire({ text: 'Please wait...', showConfirmButton: false });
     try {
-      const response = await fetch(`https://hotsalesng.com/ephad_api/update_announcement.php`, {
+      const response = await fetch(`https://ephadacademyportal.com.ng/ephad_api/update_announcement.php`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
@@ -199,7 +199,7 @@ const StudentFeedbacks = () => {
         Swal.fire({text:"Please wait..."})
         Swal.showLoading(); 
         try {
-          const response = await fetch(`https://hotsalesng.com/ephad_api/delete_student_feedback.php`, {
+          const response = await fetch(`https://ephadacademyportal.com.ng/ephad_api/delete_student_feedback.php`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ id }),

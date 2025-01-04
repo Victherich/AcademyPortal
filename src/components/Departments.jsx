@@ -110,7 +110,7 @@ const Departments = () => {
 
   const fetchDepartments = async () => {
     try {
-      const response = await fetch(`https://hotsalesng.com/ephad_api/fetch_departments.php`, {
+      const response = await fetch(`https://ephadacademyportal.com.ng/ephad_api/fetch_departments.php`, {
         method: 'GET',
         headers: {
           'Cache-Control': 'no-store',
@@ -133,7 +133,7 @@ const Departments = () => {
     Swal.showLoading();
 
     try {
-      const response = await fetch(`https://hotsalesng.com/ephad_api/create_department.php`, {
+      const response = await fetch(`https://ephadacademyportal.com.ng/ephad_api/create_department.php`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
@@ -181,7 +181,7 @@ const Departments = () => {
     Swal.showLoading();
 
     try {
-      const response = await fetch(`https://hotsalesng.com/ephad_api/update_department.php`, {
+      const response = await fetch(`https://ephadacademyportal.com.ng/ephad_api/update_department.php`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
@@ -224,7 +224,7 @@ const Departments = () => {
       const loadingAlert = Swal.fire({text:"Please wait..."});
       Swal.showLoading();
 
-    const response = await fetch('https://hotsalesng.com/ephad_api/delete_department.php', {
+    const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/delete_department.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ id }),

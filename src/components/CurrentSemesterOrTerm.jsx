@@ -70,7 +70,7 @@
 
 //   const fetchSemesters = async () => {
 //     try {
-//       const response = await fetch('https://hotsalesng.com/ephad_api/fetch_semesters.php');
+//       const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/fetch_semesters.php');
 //       const data = await response.json();
 //       if (data.success) setSemesters(data.semesters || []);
 //     } catch {}
@@ -98,7 +98,7 @@
 //         Swal.fire({ text: "Saving...", allowOutsideClick: false });
 //         Swal.showLoading();
 
-//         const response = await fetch("https://hotsalesng.com/ephad_api/set_current_semester.php", {
+//         const response = await fetch("https://ephadacademyportal.com.ng/ephad_api/set_current_semester.php", {
 //           method: "POST",
 //           headers: { "Content-Type": "application/json" },
 //           body: JSON.stringify({ semester_id: selectedSemester }),
@@ -217,7 +217,7 @@ const CurrentSemesterOrTerm = () => {
   // Fetch all semesters from the server
   const fetchSemesters = async () => {
     try {
-      const response = await axios.get("https://hotsalesng.com/ephad_api/fetch_semesters.php");
+      const response = await axios.get("https://ephadacademyportal.com.ng/ephad_api/fetch_semesters.php");
       if (response.data.success) {
         setSemesters(response.data.semesters || []);
       } else {
@@ -231,7 +231,7 @@ const CurrentSemesterOrTerm = () => {
   // Fetch the current semester from the server
   const fetchCurrentSemester = async () => {
     try {
-      const response = await axios.get("https://hotsalesng.com/ephad_api/fetch_current_semester.php");
+      const response = await axios.get("https://ephadacademyportal.com.ng/ephad_api/fetch_current_semester.php");
       if (response.data.success && response.data.current_semester) {
         setCurrentSemester(response.data.current_semester); // Set the current semester
       } else {
@@ -265,7 +265,7 @@ const CurrentSemesterOrTerm = () => {
         Swal.fire({ text: "Saving...", allowOutsideClick: false });
         Swal.showLoading();
 
-        const response = await axios.post("https://hotsalesng.com/ephad_api/set_current_semester.php", {
+        const response = await axios.post("https://ephadacademyportal.com.ng/ephad_api/set_current_semester.php", {
           semester_id: selectedSemester,
         });
 
@@ -292,7 +292,7 @@ const CurrentSemesterOrTerm = () => {
         allowOutsideClick: false,
         didOpen: () => {
             Swal.showLoading();
-            fetch('https://hotsalesng.com/ephad_api/update_subject_semester.php', {
+            fetch('https://ephadacademyportal.com.ng/ephad_api/update_subject_semester.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -336,7 +336,7 @@ const CurrentSemesterOrTerm = () => {
     Swal.fire({text:"Please wait..."})
     Swal.showLoading();
     try {
-      const response = await fetch('https://hotsalesng.com/ephad_api/update_pickup_id.php', {
+      const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/update_pickup_id.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -413,7 +413,7 @@ const CurrentSemesterOrTerm = () => {
     });
 
     try {
-      const response = await fetch('https://hotsalesng.com/ephad_api/generate_students_results.php', {
+      const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/generate_students_results.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -458,7 +458,7 @@ const CurrentSemesterOrTerm = () => {
 
           try {
             const response = await axios.post(
-              "https://hotsalesng.com/ephad_api/reset_students_score_sheet.php"
+              "https://ephadacademyportal.com.ng/ephad_api/reset_students_score_sheet.php"
             );
   
             if (response.data.success) {
@@ -492,7 +492,7 @@ const CurrentSemesterOrTerm = () => {
      
   
       try {
-        const response = await fetch('https://hotsalesng.com/ephad_api/promote_all_students.php', {
+        const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/promote_all_students.php', {
           method: 'POST',
           body: new URLSearchParams({
             'class_id': classID,  // Pass the class_id to the server
@@ -550,7 +550,7 @@ const CurrentSemesterOrTerm = () => {
      
   
       try {
-        const response = await fetch('https://hotsalesng.com/ephad_api/demote_all_students.php', {
+        const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/demote_all_students.php', {
           method: 'POST',
           body: new URLSearchParams({
             'class_id': classID,  // Pass the class_id to the server

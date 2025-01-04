@@ -115,7 +115,7 @@ const Subjects = () => {
   }, []);
 
   const fetchDepartments = async () => {
-    const response = await fetch('https://hotsalesng.com/ephad_api/fetch_departments.php');
+    const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/fetch_departments.php');
     const data = await response.json();
     
     setDepartments(data.departments || []);
@@ -123,20 +123,20 @@ const Subjects = () => {
   };
 
   const fetchClasses = async () => {
-    const response = await fetch('https://hotsalesng.com/ephad_api/fetch_classes.php');
+    const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/fetch_classes.php');
     const data = await response.json();
     setClasses(data.classes || []);
   };
 
   const fetchSubjects = async () => {
-    const response = await fetch('https://hotsalesng.com/ephad_api/fetch_subjects.php');
+    const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/fetch_subjects.php');
     const data = await response.json();
     setSubjects(data.subjects || []);
   };
 
   const fetchSemesters = async () => {
     try {
-      const response = await fetch('https://hotsalesng.com/ephad_api/fetch_semesters.php');
+      const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/fetch_semesters.php');
       const data = await response.json();
       if (data.success) setSemesters(data.semesters || []);
     } catch {}
@@ -174,7 +174,7 @@ const Subjects = () => {
       Swal.fire({ text: 'Please wait...', allowOutsideClick: false });
       Swal.showLoading();
 
-      const url = form.id ? 'https://hotsalesng.com/ephad_api/update_subject.php' : 'https://hotsalesng.com/ephad_api/create_subject.php';
+      const url = form.id ? 'https://ephadacademyportal.com.ng/ephad_api/update_subject.php' : 'https://ephadacademyportal.com.ng/ephad_api/create_subject.php';
 
       const response = await fetch(url, {
         method: 'POST',
@@ -220,7 +220,7 @@ const Subjects = () => {
       const loadingAlert = Swal.fire({ text: "Please wait..." });
       Swal.showLoading();
 
-    const response = await fetch('https://hotsalesng.com/ephad_api/delete_subject.php', {
+    const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/delete_subject.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ id }),

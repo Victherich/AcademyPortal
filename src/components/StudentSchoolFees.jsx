@@ -71,7 +71,7 @@ const StudentSchoolFees = ({ studentID }) => {
     const fetchUserDetails = async () => {
       try {
         const response = await fetch(
-          `https://hotsalesng.com/ephad_api/get_student_details.php?id=${studentID}`,
+          `https://ephadacademyportal.com.ng/ephad_api/get_student_details.php?id=${studentID}`,
           {
             method: 'GET',
             headers: {
@@ -98,7 +98,7 @@ const StudentSchoolFees = ({ studentID }) => {
   const fetchSchoolFees = async (departmentId, classId) => {
     try {
       const response = await axios.get(
-        'https://hotsalesng.com/ephad_api/fetch_school_fees_for_student.php',
+        'https://ephadacademyportal.com.ng/ephad_api/fetch_school_fees_for_student.php',
         {
           params: {
             department_id: departmentId,
@@ -130,7 +130,7 @@ const StudentSchoolFees = ({ studentID }) => {
   // Fetch all semesters from the server
   const fetchSemesters = async () => {
     try {
-      const response = await axios.get("https://hotsalesng.com/ephad_api/fetch_semesters.php");
+      const response = await axios.get("https://ephadacademyportal.com.ng/ephad_api/fetch_semesters.php");
       if (response.data.success) {
         setSemesters(response.data.semesters || []);
       } else {
@@ -182,7 +182,7 @@ const StudentSchoolFees = ({ studentID }) => {
   
           try {
             // Send payment details to the backend
-            const response = await axios.post('https://hotsalesng.com/ephad_api/handle_fees_payment.php', {
+            const response = await axios.post('https://ephadacademyportal.com.ng/ephad_api/handle_fees_payment.php', {
               student_id: studentID,  // Assume this is available on your page
               fee_id: fee.fee_id,
               first_name: firstName,
@@ -230,7 +230,7 @@ const fetchPaymentDetails = async () => {
 
   
   try {
-    const response = await fetch(`https://hotsalesng.com/ephad_api/fetch_payment_by_student_id2.php?student_id=${studentID}`);
+    const response = await fetch(`https://ephadacademyportal.com.ng/ephad_api/fetch_payment_by_student_id2.php?student_id=${studentID}`);
     const data = await response.json();
    
     if (data.success) {

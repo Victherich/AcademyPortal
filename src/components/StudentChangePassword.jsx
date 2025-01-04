@@ -89,7 +89,7 @@ const StudentChangePasswordModal = ({ userId, showModal, setShowModal }) => {
         },
       });
 
-      const url = 'https://hotsalesng.com/ephad_api/student_change_password.php';
+      const url = 'https://ephadacademyportal.com.ng/ephad_api/student_change_password.php';
       const response = await fetch(url, {
         method: 'POST',
         headers: {

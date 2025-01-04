@@ -117,7 +117,7 @@ const SchoolWeekManager = () => {
 
   const fetchWeeks = async () => {
     try {
-      const response = await fetch('https://hotsalesng.com/ephad_api/fetch_weeks.php');
+      const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/fetch_weeks.php');
       const data = await response.json();
       if (data.success) {
         setWeeks(data.weeks);
@@ -131,7 +131,7 @@ const SchoolWeekManager = () => {
 //     e.preventDefault();
 //     Swal.fire({ text: 'Please wait...', showConfirmButton: false });
 
-//     const response = await fetch('https://hotsalesng.com/ephad_api/create_week.php', {
+//     const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/create_week.php', {
 //       method: 'POST',
 //       headers: { 'Content-Type': 'application/json' },
 //       body: JSON.stringify(form),
@@ -154,8 +154,8 @@ const handleSubmit = async (e) => {
     Swal.fire({ text: 'Please wait...', showConfirmButton: false });
   
     const url = form.id
-      ? 'https://hotsalesng.com/ephad_api/update_week.php'  // URL for updating week
-      : 'https://hotsalesng.com/ephad_api/create_week.php'; // URL for creating week
+      ? 'https://ephadacademyportal.com.ng/ephad_api/update_week.php'  // URL for updating week
+      : 'https://ephadacademyportal.com.ng/ephad_api/create_week.php'; // URL for creating week
   
     const response = await fetch(url, {
       method: 'POST',
@@ -193,7 +193,7 @@ const handleSubmit = async (e) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         Swal.fire({ text: 'Please wait...', showConfirmButton: false });
-        const response = await fetch('https://hotsalesng.com/ephad_api/delete_week.php', {
+        const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/delete_week.php', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ id }),
@@ -222,7 +222,7 @@ const handleSubmit = async (e) => {
 // Fetch the current semester from the server
 const fetchCurrentSemester = async () => {
   try {
-    const response = await axios.get("https://hotsalesng.com/ephad_api/fetch_current_semester.php");
+    const response = await axios.get("https://ephadacademyportal.com.ng/ephad_api/fetch_current_semester.php");
     if (response.data.success && response.data.current_semester) {
       // setCurrentSemester(response.data.current_semester); 
       // Set the current semester
@@ -260,7 +260,7 @@ const fetchSemesterById = async (id) => {
   });
 
   try {
-    const response = await fetch(`https://hotsalesng.com/ephad_api/fetch_semester_by_id.php?id=${id}`);
+    const response = await fetch(`https://ephadacademyportal.com.ng/ephad_api/fetch_semester_by_id.php?id=${id}`);
     const data = await response.json();
 
     if (data.success) {

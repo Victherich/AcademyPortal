@@ -114,7 +114,7 @@ const Semesters = () => {
 
   const fetchSemesters = async () => {
     try {
-      const response = await fetch(`https://hotsalesng.com/ephad_api/fetch_semesters.php`, {
+      const response = await fetch(`https://ephadacademyportal.com.ng/ephad_api/fetch_semesters.php`, {
         method: 'GET',
         headers: {
           'Cache-Control': 'no-store',
@@ -137,7 +137,7 @@ const Semesters = () => {
     Swal.showLoading();
 
     try {
-      const response = await fetch(`https://hotsalesng.com/ephad_api/create_semester.php`, {
+      const response = await fetch(`https://ephadacademyportal.com.ng/ephad_api/create_semester.php`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
@@ -184,7 +184,7 @@ const Semesters = () => {
       Swal.showLoading();
 
       try {
-        const response = await fetch(`https://hotsalesng.com/ephad_api/update_semester.php`, {
+        const response = await fetch(`https://ephadacademyportal.com.ng/ephad_api/update_semester.php`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(form),
@@ -223,7 +223,7 @@ const Semesters = () => {
       const loadingAlert = Swal.fire({ text: "Please wait..." });
       Swal.showLoading();
 
-      const response = await fetch('https://hotsalesng.com/ephad_api/delete_semester.php', {
+      const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/delete_semester.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id }),

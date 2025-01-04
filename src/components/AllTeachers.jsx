@@ -55,7 +55,7 @@
 
 //   const fetchTeachers = async () => {
 //     try {
-//       const response = await axios.get("https://hotsalesng.com/ephad_api/fetch_all_teachers.php");
+//       const response = await axios.get("https://ephadacademyportal.com.ng/ephad_api/fetch_all_teachers.php");
 //       if (response.data.success) {
 //         setTeachers(response.data.teachers);
 //       } else {
@@ -71,7 +71,7 @@
 
 //   const fetchClasses = async () => {
 //     try {
-//       const response = await fetch('https://hotsalesng.com/ephad_api/fetch_classes.php');
+//       const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/fetch_classes.php');
 //       const data = await response.json();
 //       if (data.success) {
 //         // setClasses(data.classes);
@@ -189,7 +189,7 @@
 
 //   const fetchTeachers = async () => {
 //     try {
-//       const response = await axios.get("https://hotsalesng.com/ephad_api/fetch_all_teachers.php");
+//       const response = await axios.get("https://ephadacademyportal.com.ng/ephad_api/fetch_all_teachers.php");
 //       if (response.data.success) {
 //         setTeachers(response.data.teachers);
 //       } else {
@@ -202,7 +202,7 @@
 
 //   const fetchClasses = async () => {
 //     try {
-//       const response = await axios.get("https://hotsalesng.com/ephad_api/fetch_classes.php");
+//       const response = await axios.get("https://ephadacademyportal.com.ng/ephad_api/fetch_classes.php");
 //       if (response.data.success) {
 //         const classMapping = {};
 //         response.data.classes.forEach((cls) => {
@@ -317,7 +317,7 @@ const TeacherList = () => {
 
   const fetchTeachers = async () => {
     try {
-      const response = await axios.get("https://hotsalesng.com/ephad_api/fetch_all_teachers.php");
+      const response = await axios.get("https://ephadacademyportal.com.ng/ephad_api/fetch_all_teachers.php");
       if (response.data.success) {
         setTeachers(response.data.teachers);
       } else {
@@ -330,7 +330,7 @@ const TeacherList = () => {
 
   const fetchClasses = async () => {
     try {
-      const response = await axios.get("https://hotsalesng.com/ephad_api/fetch_classes.php");
+      const response = await axios.get("https://ephadacademyportal.com.ng/ephad_api/fetch_classes.php");
       if (response.data.success) {
         const classMapping = {};
         response.data.classes.forEach((cls) => {

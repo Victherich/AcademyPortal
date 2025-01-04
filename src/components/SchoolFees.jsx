@@ -114,26 +114,26 @@ const SchoolFees = () => {
   }, []);
 
   const fetchClasses = async () => {
-    const response = await fetch('https://hotsalesng.com/ephad_api/fetch_classes.php');
+    const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/fetch_classes.php');
     const data = await response.json();
     setClasses(data.classes || []);
   };
 
   const fetchSemesters = async () => {
-    const response = await fetch('https://hotsalesng.com/ephad_api/fetch_semesters.php');
+    const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/fetch_semesters.php');
     const data = await response.json();
     setSemesters(data.semesters || []);
   };
 
   const fetchDepartments = async () => {
-    const response = await fetch('https://hotsalesng.com/ephad_api/fetch_departments.php');
+    const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/fetch_departments.php');
     const data = await response.json();
     setDepartments(data.departments || []);
     // console.log(data.departments)
   };
 
   const fetchFees = async () => {
-    const response = await fetch('https://hotsalesng.com/ephad_api/fetch_school_fees.php');
+    const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/fetch_school_fees.php');
     const data = await response.json();
     setFees(data.school_fees || []);
     console.log(data)
@@ -160,7 +160,7 @@ const SchoolFees = () => {
       Swal.fire({ text: 'Processing...', allowOutsideClick: false });
       Swal.showLoading();
 
-      const url = form.id ? 'https://hotsalesng.com/ephad_api/update_school_fee.php' : 'https://hotsalesng.com/ephad_api/create_school_fee.php';
+      const url = form.id ? 'https://ephadacademyportal.com.ng/ephad_api/update_school_fee.php' : 'https://ephadacademyportal.com.ng/ephad_api/create_school_fee.php';
 
       const response = await fetch(url, {
         method: 'POST',
@@ -199,7 +199,7 @@ const SchoolFees = () => {
     });
 
     if (result.isConfirmed) {
-      const response = await fetch('https://hotsalesng.com/ephad_api/delete_school_fee.php', {
+      const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/delete_school_fee.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id }),

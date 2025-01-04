@@ -127,7 +127,7 @@
 //     });
 
 //     try {
-//       const response = await fetch('https://hotsalesng.com/ephad_api/student_login.php', {
+//       const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/student_login.php', {
 //         method: 'POST',
 //         headers: {
 //           'Content-Type': 'application/json',
@@ -329,7 +329,7 @@ const StudentLogin = () => {
     });
 
     try {
-      const response = await fetch('https://hotsalesng.com/ephad_api/student_login.php', {
+      const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/student_login.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

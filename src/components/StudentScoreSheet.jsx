@@ -142,7 +142,7 @@
 //     });
 
 //     try {
-//       const response = await fetch(`https://hotsalesng.com/ephad_api/get_student_score_sheet.php?student_id=${studentID}`, {
+//       const response = await fetch(`https://ephadacademyportal.com.ng/ephad_api/get_student_score_sheet.php?student_id=${studentID}`, {
 //         method: 'GET',
 //         headers: {
 //           'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0', // Ensure the cache headers

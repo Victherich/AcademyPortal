@@ -146,7 +146,7 @@ const StudentsByClass = () => {
 
   const fetchClasses = async () => {
     try {
-      const response = await axios.get('https://hotsalesng.com/ephad_api/fetch_classes.php');
+      const response = await axios.get('https://ephadacademyportal.com.ng/ephad_api/fetch_classes.php');
       setClasses(response.data.classes || []);
     //   console.log(response.data.classes)
     } catch (error) {
@@ -156,7 +156,7 @@ const StudentsByClass = () => {
 
   const fetchDepartments = async () => {
     try {
-      const response = await axios.get('https://hotsalesng.com/ephad_api/fetch_departments.php');
+      const response = await axios.get('https://ephadacademyportal.com.ng/ephad_api/fetch_departments.php');
       setDepartments(response.data.departments || []);
     } catch (error) {
       Swal.fire('Error', 'Failed to fetch departments', 'error');
@@ -168,7 +168,7 @@ const StudentsByClass = () => {
     Swal.showLoading();
   
     try {
-      const response = await axios.get('https://hotsalesng.com/ephad_api/fetch_students_by_class.php', {
+      const response = await axios.get('https://ephadacademyportal.com.ng/ephad_api/fetch_students_by_class.php', {
         params: {
           class_id: selectedClass, // Make sure this is the class ID you want to filter by
           department_id: selectedDepartment, // Make sure this is the department ID you want to filter by
@@ -208,7 +208,7 @@ const StudentsByClass = () => {
         Swal.fire({ title: "Processing...", allowOutsideClick: false, didOpen: () => Swal.showLoading() });
 
         try {
-            const response = await fetch("https://hotsalesng.com/ephad_api/toggle_suspend_student.php", {
+            const response = await fetch("https://ephadacademyportal.com.ng/ephad_api/toggle_suspend_student.php", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ student_id: selectedStudent.student_id, suspended }),
@@ -245,7 +245,7 @@ const StudentsByClass = () => {
         Swal.fire({ title: "Processing...", allowOutsideClick: false, didOpen: () => Swal.showLoading() });
 
         try {
-            const response = await fetch("https://hotsalesng.com/ephad_api/delete_student.php", {
+            const response = await fetch("https://ephadacademyportal.com.ng/ephad_api/delete_student.php", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ student_id: selectedStudent.student_id }),
@@ -272,7 +272,7 @@ const StudentsByClass = () => {
         try {
           const response = await fetch(
           //   `${studentInfoUrl}${studentID}`,
-          `https://hotsalesng.com/ephad_api/get_student_details.php?id=${studentID}`,
+          `https://ephadacademyportal.com.ng/ephad_api/get_student_details.php?id=${studentID}`,
             {
               method: 'GET',
               headers: {
@@ -332,7 +332,7 @@ const StudentsByClass = () => {
           console.log('Payload being sent:', payload); // Debugging payload
       
           // Send POST request
-          const response = await axios.post('https://hotsalesng.com/ephad_api/promote_one_student.php', payload, {
+          const response = await axios.post('https://ephadacademyportal.com.ng/ephad_api/promote_one_student.php', payload, {
             headers: {
               'Content-Type': 'application/x-www-form-urlencoded',
             },
@@ -404,7 +404,7 @@ const StudentsByClass = () => {
           console.log('Payload being sent:', payload); // Debugging payload
       
           // Send POST request
-          const response = await axios.post('https://hotsalesng.com/ephad_api/demote_one_student.php', payload, {
+          const response = await axios.post('https://ephadacademyportal.com.ng/ephad_api/demote_one_student.php', payload, {
             headers: {
               'Content-Type': 'application/x-www-form-urlencoded',
             },
@@ -467,7 +467,7 @@ const StudentsByClass = () => {
       <StudentList>
         {students.map((student) => (
           <StudentCard key={student.id} onClick={() => fetchUserDetails(student.id)}>
-            <Img src={`https://hotsalesng.com/ephad_api/uploads/student_profile_photos/${student.profile_photo}`} alt="student img"/>{student.first_name} {student.last_name} - Reg No.: {student.student_id} - {student.email} - {student.phone_number}
+            <Img src={`https://ephadacademyportal.com.ng/ephad_api/uploads/student_profile_photos/${student.profile_photo}`} alt="student img"/>{student.first_name} {student.last_name} - Reg No.: {student.student_id} - {student.email} - {student.phone_number}
           </StudentCard>
         ))}
       </StudentList>
@@ -479,7 +479,7 @@ const StudentsByClass = () => {
           <Modal>
           <img
               // src={`${mainDomain}/uploads/management_profile_photos/${user.profile_photo}`}
-              src={`https://hotsalesng.com/ephad_api/uploads/student_profile_photos/${selectedStudent.profile_photo}`}
+              src={`https://ephadacademyportal.com.ng/ephad_api/uploads/student_profile_photos/${selectedStudent.profile_photo}`}
               alt={`${selectedStudent.first_name}'s profile`}
               style={{
                 width:"200px",

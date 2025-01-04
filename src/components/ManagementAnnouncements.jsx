@@ -111,7 +111,7 @@ const ManagementAnnouncements = () => {
 
   const fetchAnnouncements = async () => {
     try {
-      const response = await fetch(`https://hotsalesng.com/ephad_api/fetch_announcements.php`);
+      const response = await fetch(`https://ephadacademyportal.com.ng/ephad_api/fetch_announcements.php`);
       const data = await response.json();
       if (data.success) {
         setAnnouncements(data.announcements);
@@ -127,7 +127,7 @@ const ManagementAnnouncements = () => {
     e.preventDefault();
     Swal.fire({ text: 'Please wait...', showConfirmButton: false });
     try {
-      const response = await fetch(`https://hotsalesng.com/ephad_api/create_announcement.php`, {
+      const response = await fetch(`https://ephadacademyportal.com.ng/ephad_api/create_announcement.php`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
@@ -154,7 +154,7 @@ const ManagementAnnouncements = () => {
     e.preventDefault();
     Swal.fire({ text: 'Please wait...', showConfirmButton: false });
     try {
-      const response = await fetch(`https://hotsalesng.com/ephad_api/update_announcement.php`, {
+      const response = await fetch(`https://ephadacademyportal.com.ng/ephad_api/update_announcement.php`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
@@ -183,7 +183,7 @@ const ManagementAnnouncements = () => {
         Swal.fire({text:"Please wait..."})
         Swal.showLoading(); 
         try {
-          const response = await fetch(`https://hotsalesng.com/ephad_api/delete_announcement.php`, {
+          const response = await fetch(`https://ephadacademyportal.com.ng/ephad_api/delete_announcement.php`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ id }),

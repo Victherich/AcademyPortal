@@ -65,10 +65,10 @@ const StudentEditPhoneNumberModal = ({ userId, showModal, setShowModal, fetchUse
 
 // useEffect(()=>{
 //   if(location.pathname==="/managementdashboard"){
-//     setUrl("https://hotsalesng.com/ephad_api/management_update-phone-number.php")
+//     setUrl("https://ephadacademyportal.com.ng/ephad_api/management_update-phone-number.php")
 //     alert("management")
 //   }else{
-//     setUrl("https://hotsalesng.com/ephad_api/student_update-phone-number.php")
+//     setUrl("https://ephadacademyportal.com.ng/ephad_api/student_update-phone-number.php")
 //     alert("student")
 //   }
 // },[])
@@ -105,7 +105,7 @@ const handleSave = async () => {
         },
       });
   
-      const url = 'https://hotsalesng.com/ephad_api/student_update_phone_number.php';
+      const url = 'https://ephadacademyportal.com.ng/ephad_api/student_update_phone_number.php';
       const response = await fetch(url, {
         method: 'POST',
         headers: {

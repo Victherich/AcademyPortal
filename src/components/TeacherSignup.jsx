@@ -167,7 +167,7 @@ const TeacherSignup = () => {
   //   formDataObj.append("profilePhoto", formData.profilePhoto); // Attach the profile photo file
 
   //   try {
-  //     const response = await axios.post(`https://hotsalesng.com/ephad_api/teacher_signup.php`, formDataObj, {
+  //     const response = await axios.post(`https://ephadacademyportal.com.ng/ephad_api/teacher_signup.php`, formDataObj, {
   //       headers: { "Content-Type": "multipart/form-data" },
   //     });
 
@@ -212,7 +212,7 @@ const TeacherSignup = () => {
     formDataObj.append("departmentId", departmentId); // Include department ID
   
     try {
-      const response = await axios.post(`https://hotsalesng.com/ephad_api/teacher_signup.php`, formDataObj, {
+      const response = await axios.post(`https://ephadacademyportal.com.ng/ephad_api/teacher_signup.php`, formDataObj, {
         headers: { "Content-Type": "multipart/form-data" },
       });
   
@@ -245,7 +245,7 @@ const TeacherSignup = () => {
 
   const fetchDepartments = async () => {
     try {
-      const response = await fetch('https://hotsalesng.com/ephad_api/fetch_departments.php');
+      const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/fetch_departments.php');
       const data = await response.json();
       setDepartments(data.departments || []);
     } catch (error) {
@@ -255,7 +255,7 @@ const TeacherSignup = () => {
 
   const fetchClasses = async () => {
     try {
-      const response = await fetch('https://hotsalesng.com/ephad_api/fetch_classes.php');
+      const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/fetch_classes.php');
       const data = await response.json();
       setClasses(data.classes || []);
     } catch (error) {

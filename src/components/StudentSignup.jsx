@@ -145,7 +145,7 @@ const StudentSignup = () => {
 
   const fetchDepartments = async () => {
     try {
-      const response = await fetch('https://hotsalesng.com/ephad_api/fetch_departments.php');
+      const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/fetch_departments.php');
       const data = await response.json();
       setDepartments(data.departments || []);
     } catch (error) {
@@ -155,7 +155,7 @@ const StudentSignup = () => {
 
   const fetchClasses = async () => {
     try {
-      const response = await fetch('https://hotsalesng.com/ephad_api/fetch_classes.php');
+      const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/fetch_classes.php');
       const data = await response.json();
       setClasses(data.classes || []);
     } catch (error) {
@@ -198,7 +198,7 @@ const StudentSignup = () => {
       },
     });
   
-    fetch('https://hotsalesng.com/ephad_api/student_signup.php', {
+    fetch('https://ephadacademyportal.com.ng/ephad_api/student_signup.php', {
       method: 'POST',
       body: formData,
     })
@@ -250,7 +250,7 @@ const StudentSignup = () => {
 
 
   const addStudentToSubject2 = async (student_id, class_id) => {
-      const apiUrl = 'https://hotsalesng.com/ephad_api/insert_student_initail_scores.php';
+      const apiUrl = 'https://ephadacademyportal.com.ng/ephad_api/insert_student_initail_scores.php';
     
       try {
           const response = await fetch(apiUrl, {
@@ -283,7 +283,7 @@ const StudentSignup = () => {
         Swal.fire({text:"Please wait..."})
         Swal.showLoading();
         try {
-          const response = await fetch('https://hotsalesng.com/ephad_api/update_pickup_id.php', {
+          const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/update_pickup_id.php', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -314,7 +314,7 @@ const StudentSignup = () => {
           allowOutsideClick: false,
           didOpen: () => {
               Swal.showLoading();
-              fetch('https://hotsalesng.com/ephad_api/update_subject_semester.php', {
+              fetch('https://ephadacademyportal.com.ng/ephad_api/update_subject_semester.php', {
                   method: 'POST',
                   headers: {
                       'Content-Type': 'application/json'
@@ -375,7 +375,7 @@ const updateClassId = async (studentId, classId) => {
     });
 
     // Make API request
-    const response = await axios.post('https://hotsalesng.com/ephad_api/class_id_update.php', new URLSearchParams({
+    const response = await axios.post('https://ephadacademyportal.com.ng/ephad_api/class_id_update.php', new URLSearchParams({
       student_id: studentId,
       class_id: classId,
     }),
@@ -669,7 +669,7 @@ export default StudentSignup;
 
 //   const fetchDepartments = async () => {
 //     try {
-//       const response = await fetch('https://hotsalesng.com/ephad_api/fetch_departments.php');
+//       const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/fetch_departments.php');
 //       const data = await response.json();
 //       setDepartments(data.departments || []);
 //     } catch (error) {
@@ -679,7 +679,7 @@ export default StudentSignup;
 
 //   const fetchClasses = async () => {
 //     try {
-//       const response = await fetch('https://hotsalesng.com/ephad_api/fetch_classes.php');
+//       const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/fetch_classes.php');
 //       const data = await response.json();
 //       setClasses(data.classes || []);
 //     } catch (error) {
@@ -733,7 +733,7 @@ export default StudentSignup;
 //     });
 
 //     try {
-//       const response = await fetch('https://hotsalesng.com/ephad_api/student_signup.php', {
+//       const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/student_signup.php', {
 //         method: 'POST',
 //         body: formDataObj,
 //       });
@@ -1004,7 +1004,7 @@ export default StudentSignup;
 
 //   const fetchDepartments = async () => {
 //     try {
-//       const response = await fetch('https://hotsalesng.com/ephad_api/fetch_departments.php');
+//       const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/fetch_departments.php');
 //       const data = await response.json();
 //       setDepartments(data.departments || []);
 //     } catch (error) {
@@ -1014,7 +1014,7 @@ export default StudentSignup;
 
 //   const fetchClasses = async () => {
 //     try {
-//       const response = await fetch('https://hotsalesng.com/ephad_api/fetch_classes.php');
+//       const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/fetch_classes.php');
 //       const data = await response.json();
 //       setClasses(data.classes || []);
 //     } catch (error) {
@@ -1100,7 +1100,7 @@ export default StudentSignup;
 //   //   });
 
 //   //   try {
-//   //     const response = await fetch('https://hotsalesng.com/ephad_api/student_signup.php', {
+//   //     const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/student_signup.php', {
 //   //       method: 'POST',
 //   //       body: formDataObj,
 //   //     });
@@ -1149,7 +1149,7 @@ export default StudentSignup;
 //     });
 
 //     try {
-//       const response = await fetch('https://hotsalesng.com/ephad_api/student_signup.php', {
+//       const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/student_signup.php', {
 //         method: 'POST',
 //         body: formDataObj,
 //       });
@@ -1181,7 +1181,7 @@ export default StudentSignup;
 // // addStudentToSubject2(1)
 
 // const addStudentToSubject2 = async (primary_id, class_id) => {
-//   const apiUrl = 'https://hotsalesng.com/ephad_api/insert_student_initail_scores.php';
+//   const apiUrl = 'https://ephadacademyportal.com.ng/ephad_api/insert_student_initail_scores.php';
 
 //   try {
 //       const response = await fetch(apiUrl, {
@@ -1217,7 +1217,7 @@ export default StudentSignup;
 //       allowOutsideClick: false,
 //       didOpen: () => {
 //           Swal.showLoading();
-//           fetch('https://hotsalesng.com/ephad_api/update_subject_semester.php', {
+//           fetch('https://ephadacademyportal.com.ng/ephad_api/update_subject_semester.php', {
 //               method: 'POST',
 //               headers: {
 //                   'Content-Type': 'application/json'
@@ -1265,7 +1265,7 @@ export default StudentSignup;
 //       Swal.showLoading();
 
 //       // Send POST request with primary_id and class_id to the PHP script
-//       fetch('https://hotsalesng.com/ephad_api/update_subject_class_id _for_student.php', {
+//       fetch('https://ephadacademyportal.com.ng/ephad_api/update_subject_class_id _for_student.php', {
 //         method: 'POST',
 //         headers: {
 //           'Content-Type': 'application/x-www-form-urlencoded',
@@ -1488,7 +1488,7 @@ export default StudentSignup;
 
 //   const fetchDepartments = async () => {
 //     try {
-//       const response = await fetch('https://hotsalesng.com/ephad_api/fetch_departments.php');
+//       const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/fetch_departments.php');
 //       const data = await response.json();
 //       setDepartments(data.departments || []);
 //     } catch (error) {
@@ -1498,7 +1498,7 @@ export default StudentSignup;
 
 //   const fetchClasses = async () => {
 //     try {
-//       const response = await fetch('https://hotsalesng.com/ephad_api/fetch_classes.php');
+//       const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/fetch_classes.php');
 //       const data = await response.json();
 //       setClasses(data.classes || []);
 //     } catch (error) {
@@ -1523,7 +1523,7 @@ export default StudentSignup;
 //     formData.append('class_id', classId);
 //     formData.append('profilePhoto', profilePhoto);
 
-//     fetch('https://hotsalesng.com/ephad_api/student_signup.php', {
+//     fetch('https://ephadacademyportal.com.ng/ephad_api/student_signup.php', {
 //       method: 'POST',
 //       body: formData,
 //     })

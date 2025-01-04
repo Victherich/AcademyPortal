@@ -14,7 +14,7 @@ const SearchStudent = () => {
         Swal.fire({ title: "Loading...", allowOutsideClick: false, didOpen: () => Swal.showLoading() });
 
         try {
-            const response = await fetch(`https://hotsalesng.com/ephad_api/fetch_student_by_id.php?student_id=${studentId}`);
+            const response = await fetch(`https://ephadacademyportal.com.ng/ephad_api/fetch_student_by_id.php?student_id=${studentId}`);
             const data = await response.json();
 
             if (data.success) {
@@ -51,7 +51,7 @@ const SearchStudent = () => {
         Swal.fire({ title: "Processing...", allowOutsideClick: false, didOpen: () => Swal.showLoading() });
 
         try {
-            const response = await fetch("https://hotsalesng.com/ephad_api/toggle_suspend_student.php", {
+            const response = await fetch("https://ephadacademyportal.com.ng/ephad_api/toggle_suspend_student.php", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ student_id: student.student_id, suspended }),
@@ -86,7 +86,7 @@ const SearchStudent = () => {
         Swal.fire({ title: "Processing...", allowOutsideClick: false, didOpen: () => Swal.showLoading() });
 
         try {
-            const response = await fetch("https://hotsalesng.com/ephad_api/delete_student.php", {
+            const response = await fetch("https://ephadacademyportal.com.ng/ephad_api/delete_student.php", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ student_id: student.student_id }),
@@ -119,7 +119,7 @@ const SearchStudent = () => {
                 setError(null);
     
                 try {
-                    const response = await fetch(`https://hotsalesng.com/ephad_api/fetch_department_by_id.php?id=${student?.department_id}`);
+                    const response = await fetch(`https://ephadacademyportal.com.ng/ephad_api/fetch_department_by_id.php?id=${student?.department_id}`);
                     
                     if (!response.ok) {
                         // throw new Error(`Error: ${response.status} - ${response.statusText}`);
@@ -161,7 +161,7 @@ const SearchStudent = () => {
             // setError(null);
     
             try {
-                const response = await fetch(`https://hotsalesng.com/ephad_api/fetch_class_by_id.php?id=${student?.class_id}`);
+                const response = await fetch(`https://ephadacademyportal.com.ng/ephad_api/fetch_class_by_id.php?id=${student?.class_id}`);
                 
                 if (!response.ok) {
                     // throw new Error(`Error: ${response.status} - ${response.statusText}`);
@@ -213,7 +213,7 @@ const SearchStudent = () => {
                     <h4>Student Details</h4>
                     <img
               // src={`${mainDomain}/uploads/management_profile_photos/${user.profile_photo}`}
-              src={`https://hotsalesng.com/ephad_api/uploads/student_profile_photos/${student.profile_photo}`}
+              src={`https://ephadacademyportal.com.ng/ephad_api/uploads/student_profile_photos/${student.profile_photo}`}
               alt={`${student.first_name}'s profile`}
               style={{
                 width:"200px",

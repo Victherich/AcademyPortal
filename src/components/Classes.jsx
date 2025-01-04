@@ -117,7 +117,7 @@ const Classes = () => {
       
 
     try {
-      const response = await fetch(`https://hotsalesng.com/ephad_api/fetch_departments.php`);
+      const response = await fetch(`https://ephadacademyportal.com.ng/ephad_api/fetch_departments.php`);
       const data = await response.json();
       if (data.success) {
         setDepartments(data.departments);
@@ -132,7 +132,7 @@ const Classes = () => {
 
   const fetchClasses = async () => {
     try {
-      const response = await fetch('https://hotsalesng.com/ephad_api/fetch_classes.php');
+      const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/fetch_classes.php');
       const data = await response.json();
       if (data.success) {
         setClasses(data.classes);
@@ -150,7 +150,7 @@ const Classes = () => {
     Swal.showLoading();
 
     try {
-      const response = await fetch('https://hotsalesng.com/ephad_api/create_class.php', {
+      const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/create_class.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
@@ -199,7 +199,7 @@ const Classes = () => {
     Swal.showLoading();
 
     try {
-      const response = await fetch('https://hotsalesng.com/ephad_api/update_class.php', {
+      const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/update_class.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
@@ -242,7 +242,7 @@ const Classes = () => {
       Swal.showLoading();
 
     try {
-      const response = await fetch('https://hotsalesng.com/ephad_api/delete_class.php', {
+      const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/delete_class.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id }),

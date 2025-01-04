@@ -124,7 +124,7 @@ const SchoolManagementForgotPassword = () => {
     Swal.showLoading();
 
     try {
-      const response = await fetch("https://hotsalesng.com/ephad_api/management_forgot_password.php", {
+      const response = await fetch("https://ephadacademyportal.com.ng/ephad_api/management_forgot_password.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),

@@ -130,7 +130,7 @@ const ManagementResetPassword = () => {
         Swal.showLoading();
 
     try {
-      const response = await fetch("https://hotsalesng.com/ephad_api/management_reset_password.php", {
+      const response = await fetch("https://ephadacademyportal.com.ng/ephad_api/management_reset_password.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ token, password }),

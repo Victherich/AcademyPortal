@@ -10,10 +10,10 @@ const ContextProvider = ({children}) => {
     const stateStudent = false;
     const stateTeacher = false;
     const hour = "8:06am"
-    const managmentSignupUrl = "https://hotsalesng.com/ephad_api/management_signup.php"
-    const managementLoginUrl = "https://hotsalesng.com/ephad_api/management_login.php"
-    const managementInfoUrl= "https://hotsalesng.com/ephad_api/get_management_user.php?id="
-    const mainDomain = "https://hotsalesng.com/"
+    const managmentSignupUrl = "https://ephadacademyportal.com.ng/ephad_api/management_signup.php"
+    const managementLoginUrl = "https://ephadacademyportal.com.ng/ephad_api/management_login.php"
+    const managementInfoUrl= "https://ephadacademyportal.com.ng/ephad_api/get_management_user.php?id="
+    const mainDomain = "https://ephadacademyportal.com.ng/"
 
 
 
@@ -36,7 +36,9 @@ export default ContextProvider
 //pw: ephad123ephad
 
 
-
+// database main
+// User “ephadacademyport_ephad” was added to the database “ephadacademyport_ephad”.
+//pw: ephad123ephad
 
 
 // https://chatgpt.com/c/6750a656-4964-8003-9c81-05792011e2ca

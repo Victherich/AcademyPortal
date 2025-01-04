@@ -110,7 +110,7 @@ const StudentUserDetails = ({ studentID}) => {
       try {
         const response = await fetch(
         //   `${studentInfoUrl}${studentID}`,
-        `https://hotsalesng.com/ephad_api/get_student_details.php?id=${studentID}`,
+        `https://ephadacademyportal.com.ng/ephad_api/get_student_details.php?id=${studentID}`,
           {
             method: 'GET',
             headers: {
@@ -149,7 +149,7 @@ const StudentUserDetails = ({ studentID}) => {
             setError(null);
 
             try {
-                const response = await fetch(`https://hotsalesng.com/ephad_api/fetch_department_by_id.php?id=${user?.department_id}`);
+                const response = await fetch(`https://ephadacademyportal.com.ng/ephad_api/fetch_department_by_id.php?id=${user?.department_id}`);
                 
                 if (!response.ok) {
                     // throw new Error(`Error: ${response.status} - ${response.statusText}`);
@@ -191,7 +191,7 @@ useEffect(() => {
         // setError(null);
 
         try {
-            const response = await fetch(`https://hotsalesng.com/ephad_api/fetch_class_by_id.php?id=${user?.class_id}`);
+            const response = await fetch(`https://ephadacademyportal.com.ng/ephad_api/fetch_class_by_id.php?id=${user?.class_id}`);
             
             if (!response.ok) {
                 // throw new Error(`Error: ${response.status} - ${response.statusText}`);
@@ -240,7 +240,7 @@ useEffect(() => {
           {user.profile_photo && (
             <ProfilePhoto
               // src={`${mainDomain}/uploads/management_profile_photos/${user.profile_photo}`}
-              src={`https://hotsalesng.com/ephad_api/uploads/student_profile_photos/${user.profile_photo}`}
+              src={`https://ephadacademyportal.com.ng/ephad_api/uploads/student_profile_photos/${user.profile_photo}`}
               alt={`${user.first_name}'s profile`}
             />
           )}

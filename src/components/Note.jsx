@@ -109,7 +109,7 @@ const StudentSignup = () => {
 
   const fetchDepartments = async () => {
     try {
-      const response = await fetch('https://hotsalesng.com/ephad_api/fetch_departments.php');
+      const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/fetch_departments.php');
       const data = await response.json();
       setDepartments(data.departments || []);
     } catch (error) {
@@ -119,7 +119,7 @@ const StudentSignup = () => {
 
   const fetchClasses = async () => {
     try {
-      const response = await fetch('https://hotsalesng.com/ephad_api/fetch_classes.php');
+      const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/fetch_classes.php');
       const data = await response.json();
       setClasses(data.classes || []);
     } catch (error) {
@@ -180,7 +180,7 @@ const StudentSignup = () => {
     });
 
     try {
-      const response = await fetch('https://hotsalesng.com/ephad_api/student_signup.php', {
+      const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/student_signup.php', {
         method: 'POST',
         body: formDataObj,
       });

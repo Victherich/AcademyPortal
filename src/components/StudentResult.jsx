@@ -75,7 +75,7 @@
 
  
 //     const fetchScores = async () => {
-//       const url = `https://hotsalesng.com/ephad_api/fetch_student_result_by_id_class_semester.php?student_id=${studentId}&semester_id=${semesterId}&class_id=${classId}`;
+//       const url = `https://ephadacademyportal.com.ng/ephad_api/fetch_student_result_by_id_class_semester.php?student_id=${studentId}&semester_id=${semesterId}&class_id=${classId}`;
 //       try {
 //         const response = await fetch(url);
 //         const result = await response.json();
@@ -310,7 +310,7 @@ const [studentData, setStudentData] = useState({});
 //   const [studentDetails, setStudentDetails] = useState(null);
 
   const fetchScores = async () => {
-    const url = `https://hotsalesng.com/ephad_api/fetch_student_result_by_id_class_semester.php?student_id=${studentId}&semester_id=${semesterId}&class_id=${classId}`;
+    const url = `https://ephadacademyportal.com.ng/ephad_api/fetch_student_result_by_id_class_semester.php?student_id=${studentId}&semester_id=${semesterId}&class_id=${classId}`;
     try {
       const response = await fetch(url);
       const result = await response.json();
@@ -375,7 +375,7 @@ useEffect(() => {
 
   const fetchClasses = async () => {
     try {
-      const response = await fetch('https://hotsalesng.com/ephad_api/fetch_classes.php');
+      const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/fetch_classes.php');
       const data = await response.json();
       if (data.success) {
         setClasses(data.classes);
@@ -402,7 +402,7 @@ useEffect(() => {
         // setError(null);
 
         try {
-            const response = await fetch(`https://hotsalesng.com/ephad_api/fetch_class_by_id.php?id=${studentData?.class_id}`);
+            const response = await fetch(`https://ephadacademyportal.com.ng/ephad_api/fetch_class_by_id.php?id=${studentData?.class_id}`);
             
             if (!response.ok) {
                 // throw new Error(`Error: ${response.status} - ${response.statusText}`);
@@ -443,7 +443,7 @@ useEffect(() => {
   
     try {
       // Construct the API URL
-      const url = `https://hotsalesng.com/ephad_api/fetch_student_result_table_by_id_by_class_id.php?id=${studentId}&class_id=${classId}`;
+      const url = `https://ephadacademyportal.com.ng/ephad_api/fetch_student_result_table_by_id_by_class_id.php?id=${studentId}&class_id=${classId}`;
   
       // Fetch data from the backend
       const response = await fetch(url);
@@ -496,7 +496,7 @@ const fetchSemesterById = async (id) => {
   });
 
   try {
-    const response = await fetch(`https://hotsalesng.com/ephad_api/fetch_semester_by_id.php?id=${id}`);
+    const response = await fetch(`https://ephadacademyportal.com.ng/ephad_api/fetch_semester_by_id.php?id=${id}`);
     const data = await response.json();
 
     if (data.success) {

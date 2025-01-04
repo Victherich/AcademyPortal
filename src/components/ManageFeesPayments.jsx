@@ -127,7 +127,7 @@
 
 //   const fetchClasses = async () => {
 //     try {
-//       const response = await axios.get('https://hotsalesng.com/ephad_api/fetch_classes.php');
+//       const response = await axios.get('https://ephadacademyportal.com.ng/ephad_api/fetch_classes.php');
 //       setClasses(response.data.classes || []);
 //     } catch (error) {
 //       Swal.fire('Error', 'Failed to fetch classes', 'error');
@@ -136,7 +136,7 @@
 
 //   const fetchDepartments = async () => {
 //     try {
-//       const response = await axios.get('https://hotsalesng.com/ephad_api/fetch_departments.php');
+//       const response = await axios.get('https://ephadacademyportal.com.ng/ephad_api/fetch_departments.php');
 //       setDepartments(response.data.departments || []);
 //     } catch (error) {
 //       Swal.fire('Error', 'Failed to fetch departments', 'error');
@@ -149,7 +149,7 @@
 //   const fetchPaidStudents = async (semester) => {
 
 //     try {
-//       const response = await axios.get('https://hotsalesng.com/ephad_api/fetch_paid_students.php', {
+//       const response = await axios.get('https://ephadacademyportal.com.ng/ephad_api/fetch_paid_students.php', {
 //         params: {
 //           semester: semester,
 //         },
@@ -171,7 +171,7 @@
 //     Swal.showLoading();
 
 //     try {
-//       const response = await axios.get('https://hotsalesng.com/ephad_api/fetch_students_by_class.php', {
+//       const response = await axios.get('https://ephadacademyportal.com.ng/ephad_api/fetch_students_by_class.php', {
 //         params: {
 //           class_id: selectedClass,
 //           department_id: selectedDepartment,
@@ -198,7 +198,7 @@
 //     Swal.fire({ text: 'Fetching student...' });
 //     Swal.showLoading();
 //     try {
-//       const response = await fetch(`https://hotsalesng.com/ephad_api/get_student_details.php?id=${studentID}`);
+//       const response = await fetch(`https://ephadacademyportal.com.ng/ephad_api/get_student_details.php?id=${studentID}`);
 //       const data = await response.json();
 //       if (data.success) {
 //         setSelectedStudent(data.student);
@@ -231,7 +231,7 @@
 //   // Fetch all semesters from the server
 //   const fetchSemesters = async () => {
 //     try {
-//       const response = await axios.get("https://hotsalesng.com/ephad_api/fetch_semesters.php");
+//       const response = await axios.get("https://ephadacademyportal.com.ng/ephad_api/fetch_semesters.php");
 //       if (response.data.success) {
 //         setSemesters(response.data.semesters || []);
 //       } else {
@@ -297,7 +297,7 @@
 //           <Overlay onClick={() => setSelectedStudent(null)} />
 //           <Modal>
 //             <img
-//               src={`https://hotsalesng.com/ephad_api/uploads/student_profile_photos/${selectedStudent.profile_photo}`}
+//               src={`https://ephadacademyportal.com.ng/ephad_api/uploads/student_profile_photos/${selectedStudent.profile_photo}`}
 //               alt={`${selectedStudent.first_name}'s profile`}
 //               style={{
 //                 width: '200px',
@@ -461,7 +461,7 @@
 
 //   const fetchClasses = async () => {
 //     try {
-//       const response = await axios.get('https://hotsalesng.com/ephad_api/fetch_classes.php');
+//       const response = await axios.get('https://ephadacademyportal.com.ng/ephad_api/fetch_classes.php');
 //       setClasses(response.data.classes || []);
 //     } catch (error) {
 //       Swal.fire('Error', 'Failed to fetch classes', 'error');
@@ -470,7 +470,7 @@
 
 //   const fetchDepartments = async () => {
 //     try {
-//       const response = await axios.get('https://hotsalesng.com/ephad_api/fetch_departments.php');
+//       const response = await axios.get('https://ephadacademyportal.com.ng/ephad_api/fetch_departments.php');
 //       setDepartments(response.data.departments || []);
 //     } catch (error) {
 //       Swal.fire('Error', 'Failed to fetch departments', 'error');
@@ -479,7 +479,7 @@
 
 //   const fetchSemesters = async () => {
 //     try {
-//       const response = await axios.get('https://hotsalesng.com/ephad_api/fetch_semesters.php');
+//       const response = await axios.get('https://ephadacademyportal.com.ng/ephad_api/fetch_semesters.php');
 //       if (response.data.success) {
 //         setSemesters(response.data.semesters || []);
 //       } else {
@@ -492,7 +492,7 @@
 
 //   const fetchPaidStudents = async (semester) => {
 //     try {
-//       const response = await axios.get(`https://hotsalesng.com/ephad_api/fetch_paid_students.php?timestamp=${Date.now()}`, {
+//       const response = await axios.get(`https://ephadacademyportal.com.ng/ephad_api/fetch_paid_students.php?timestamp=${Date.now()}`, {
 //         params: { semester },
 //       });
 //       if (response.data.success) {
@@ -511,7 +511,7 @@
 //     Swal.showLoading();
 
 //     try {
-//       const response = await axios.get('https://hotsalesng.com/ephad_api/fetch_students_by_class.php', {
+//       const response = await axios.get('https://ephadacademyportal.com.ng/ephad_api/fetch_students_by_class.php', {
 //         params: {
 //           class_id: selectedClass,
 //           department_id: selectedDepartment,
@@ -537,7 +537,7 @@
 //     Swal.fire({ text: 'Fetching student...' });
 //     Swal.showLoading();
 //     try {
-//       const response = await axios.get(`https://hotsalesng.com/ephad_api/get_student_details.php?id=${studentID}`);
+//       const response = await axios.get(`https://ephadacademyportal.com.ng/ephad_api/get_student_details.php?id=${studentID}`);
 //       if (response.data.success) {
 //         setSelectedStudent(response.data.student);
 //       } else {
@@ -599,7 +599,7 @@
 //           <Overlay onClick={() => setSelectedStudent(null)} />
 //           <Modal>
 //             <img
-//               src={`https://hotsalesng.com/ephad_api/uploads/student_profile_photos/${selectedStudent.profile_photo}`}
+//               src={`https://ephadacademyportal.com.ng/ephad_api/uploads/student_profile_photos/${selectedStudent.profile_photo}`}
 //               alt={`${selectedStudent.first_name}'s profile`}
 //               style={{ width: '200px', height: '200px', borderRadius: '50%' }}
 //             />
@@ -763,7 +763,7 @@ const ManageFeesPayments = () => {
 
   const fetchClasses = async () => {
     try {
-      const response = await axios.get('https://hotsalesng.com/ephad_api/fetch_classes.php');
+      const response = await axios.get('https://ephadacademyportal.com.ng/ephad_api/fetch_classes.php');
       setClasses(response.data.classes || []);
     } catch (error) {
       Swal.fire('Error', 'Failed to fetch classes', 'error');
@@ -772,7 +772,7 @@ const ManageFeesPayments = () => {
 
   const fetchDepartments = async () => {
     try {
-      const response = await axios.get('https://hotsalesng.com/ephad_api/fetch_departments.php');
+      const response = await axios.get('https://ephadacademyportal.com.ng/ephad_api/fetch_departments.php');
       setDepartments(response.data.departments || []);
     } catch (error) {
       Swal.fire('Error', 'Failed to fetch departments', 'error');
@@ -781,7 +781,7 @@ const ManageFeesPayments = () => {
 
   const fetchSemesters = async () => {
     try {
-      const response = await axios.get('https://hotsalesng.com/ephad_api/fetch_semesters.php');
+      const response = await axios.get('https://ephadacademyportal.com.ng/ephad_api/fetch_semesters.php');
       if (response.data.success) {
         setSemesters(response.data.semesters || []);
       } else {
@@ -794,7 +794,7 @@ const ManageFeesPayments = () => {
 
   const fetchPaidStudents = async (semester) => {
     try {
-      const response = await axios.get('https://hotsalesng.com/ephad_api/fetch_paid_students.php', {
+      const response = await axios.get('https://ephadacademyportal.com.ng/ephad_api/fetch_paid_students.php', {
         params: { semester },
       });
 
@@ -822,7 +822,7 @@ const ManageFeesPayments = () => {
     Swal.showLoading();
 
     try {
-      const response = await axios.get('https://hotsalesng.com/ephad_api/fetch_students_by_class.php', {
+      const response = await axios.get('https://ephadacademyportal.com.ng/ephad_api/fetch_students_by_class.php', {
         params: { class_id: selectedClass, department_id: selectedDepartment },
       });
 
@@ -846,7 +846,7 @@ const ManageFeesPayments = () => {
     Swal.fire({ text: 'Fetching student...' });
     Swal.showLoading();
     try {
-      const response = await fetch(`https://hotsalesng.com/ephad_api/get_student_details.php?id=${studentID}`);
+      const response = await fetch(`https://ephadacademyportal.com.ng/ephad_api/get_student_details.php?id=${studentID}`);
       const data = await response.json();
       if (data.success) {
         setSelectedStudent(data.student);
@@ -902,7 +902,7 @@ const ManageFeesPayments = () => {
         {students.map((student) => (
           <StudentCard key={student.student_id}>
             <Img 
-            src={`https://hotsalesng.com/ephad_api/uploads/student_profile_photos/${student.profile_photo}`}
+            src={`https://ephadacademyportal.com.ng/ephad_api/uploads/student_profile_photos/${student.profile_photo}`}
              alt="studentImage"/>
             <p style={{fontSize:"small"}} ><strong>Name:</strong> {student.first_name} {student.last_name}</p> 
             <p style={{fontSize:"small"}} ><strong>Reg No.:</strong> {student.student_id}</p>
@@ -917,7 +917,7 @@ const ManageFeesPayments = () => {
           <Overlay onClick={() => setSelectedStudent(null)} />
           <Modal>
             <img
-              src={`https://hotsalesng.com/ephad_api/uploads/student_profile_photos/${selectedStudent.profile_photo}`}
+              src={`https://ephadacademyportal.com.ng/ephad_api/uploads/student_profile_photos/${selectedStudent.profile_photo}`}
               alt={`${selectedStudent.first_name}'s profile`}
               style={{
                 width: '200px',

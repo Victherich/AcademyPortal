@@ -146,7 +146,7 @@ const ManagementUserDetails = ({ managementID}) => {
           {user.profile_photo && (
             <ProfilePhoto
               // src={`${mainDomain}/uploads/management_profile_photos/${user.profile_photo}`}
-              src={`https://hotsalesng.com/ephad_api/uploads/management_profile_photos/${user.profile_photo}`}
+              src={`https://ephadacademyportal.com.ng/ephad_api/uploads/management_profile_photos/${user.profile_photo}`}
               alt={`${user.first_name}'s profile`}
             />
           )}
