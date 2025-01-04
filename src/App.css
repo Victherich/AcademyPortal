@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+
+
+.swal2-popup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999999999999999999999999999999999999999999999999999999999999999999999999999;
+}
+
+.swal2-popup .swal2-title {
+  font-family: sans-serif;
+  /* color: blue;   */
+  /* color: #FF8095; */
+  color:purple;
+}
+
+.swal2-popup .swal2-text {
+  font-family: sans-serif;
+} 
+
