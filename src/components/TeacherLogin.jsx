@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import heroimg from '../images/teacherimg1.png';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import { useDispatch } from 'react-redux';
+import { teacherLogin } from '../Features/Slice';
 
 const LoginContainer = styled.div`
   display: flex;
@@ -96,8 +99,9 @@ const LinkText = styled.p`
 
 const TeacherLogin = () => {
     const navigate = useNavigate();
-  const [formData, setFormData] = useState({ email: '', password: '' });
+ const [formData, setFormData] = useState({ managementID: '', password: '' });
   const [showPassword, setShowPassword] = useState(false);
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -108,22 +112,69 @@ const TeacherLogin = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert(`School Management login submitted with: ${JSON.stringify(formData)}`);
-  };
+ const handleSubmit = async (e) => {
+     e.preventDefault();
+ 
+     const loadingAlert=Swal.fire({title:"Please wait..."})
+     Swal.showLoading();
+ 
+     try {
+       const response = await fetch(`https://ephadacademyportal.com.ng/ephad_api/teacher_login.php`, {
+         method: 'POST',
+         headers: { 'Content-Type': 'application/json' },
+         body: JSON.stringify({ 
+           managementID: formData.managementID, 
+           password: formData.password 
+         }),
+       });
+   
+       const data = await response.json();
+       if (data.success) {
+         Swal.fire({text:'Login Successful!',allowOutsideClick:false,icon:"success"});
+        
+         // console.log(data)
+         // Redirect or perform other actions on successful login
+         const teacherInfo = data.user
+         const teacherToken = data.user.token
+         dispatch(teacherLogin({teacherInfo,teacherToken}));
+         navigate('/teacherdashboard')
+ 
+       } else {
+         Swal.fire({text:data.error,allowOutsideClick:false});
+        
+       }
+     } catch (error) {
+       // alert('An error occurred. Please try again.');
+       Swal.fire({text:'An error occurred. Please try again.',allowOutsideClick:false});
+       console.error('Login Error:', error);
+     }
+   };
+   
+
+
+
+
 
   return (
     <LoginContainer>
       <Title>Teacher Login</Title>
       <Form onSubmit={handleSubmit}>
-        <Input
+        {/* <Input
           type="email"
           name="email"
           placeholder="Email"
           value={formData.email}
           onChange={handleChange}
-        />
+        /> */}
+        <Input
+  type="text"
+  name="managementID"
+  placeholder="Management ID"
+  value={formData.managementID}
+  onChange={handleChange}
+  required
+/>
+
         <div style={{ position: 'relative' }}>
           <Input
             type={showPassword ? 'text' : 'password'}
@@ -131,13 +182,16 @@ const TeacherLogin = () => {
             placeholder="Password"
             value={formData.password}
             onChange={handleChange}
+            required
           />
           <PasswordToggle onClick={togglePasswordVisibility}>
             {showPassword ? 'Hide' : 'Show'}
           </PasswordToggle>
         </div>
         <Button type="submit">Login</Button>
-        <LinkText onClick={()=>navigate('/teachersignup')}>Don't have an account? Sign up</LinkText>
+        {/* <LinkText onClick={()=>navigate('/managementsignup')}>Don't have an account? Sign up</LinkText> */}
+        <LinkText onClick={()=>navigate('/teacherforgotpassword')}>Forgot Password?</LinkText>
+      
       </Form>
     </LoginContainer>
   );

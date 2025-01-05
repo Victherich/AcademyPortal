@@ -128,7 +128,7 @@ margin-right:5px;
 
 
 
-const StudentsByClass = () => {
+const StudentsByClass = ({managementID}) => {
   const location = useLocation();
   const [classes, setClasses] = useState([]);
   const [departments, setDepartments] = useState([]);
@@ -137,6 +137,7 @@ const StudentsByClass = () => {
   const [selectedDepartment, setSelectedDepartment] = useState(11);
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [showScoreSheet,setShowScoreSheet]=useState(false)
+  const [user,setUser]=useState({})
   console.log(selectedStudent)
 
   useEffect(() => {
@@ -154,6 +155,48 @@ const StudentsByClass = () => {
     }
   };
 
+
+
+
+
+const fetchUserDetailsById = async () => {
+      try {
+        const response = await fetch(
+            `https://ephadacademyportal.com.ng/ephad_api/get_teacher_user.php?id=${managementID}`,
+          {
+            method: 'GET',
+            headers: {
+              'Cache-Control': 'no-store',
+            },
+          }
+        );
+        const data = await response.json();
+        if (data.success) {
+          setUser(data.user);
+          console.log(data)
+        } else {
+          setError(data.error || 'Error fetching user details.');
+
+        }
+      } catch (err) {
+        setError('Failed to fetch user details. Please try again.');
+      }
+    };
+
+
+    useEffect(() => {
+    fetchUserDetailsById();
+  }, [managementID]);
+
+
+
+
+
+
+
+
+  
+
   const fetchDepartments = async () => {
     try {
       const response = await axios.get('https://ephadacademyportal.com.ng/ephad_api/fetch_departments.php');
@@ -162,8 +205,21 @@ const StudentsByClass = () => {
       Swal.fire('Error', 'Failed to fetch departments', 'error');
     }
   };
+
+
+
+
+
+
   const fetchStudents = async (e) => {
     e.preventDefault();
+
+if(location.pathname==="/teacherdashboard"&&selectedClass!=user.class_id){
+  Swal.fire({text:"Please select only your class"})
+    return ;
+}
+
+
     Swal.fire({ text: "Please wait..." });
     Swal.showLoading();
   
@@ -477,7 +533,7 @@ const StudentsByClass = () => {
           // onClick={() => setSelectedStudent(null)} 
             />
           <Modal>
-          <img
+          <img  
               // src={`${mainDomain}/uploads/management_profile_photos/${user.profile_photo}`}
               src={`https://ephadacademyportal.com.ng/ephad_api/uploads/student_profile_photos/${selectedStudent.profile_photo}`}
               alt={`${selectedStudent.first_name}'s profile`}

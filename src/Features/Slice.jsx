@@ -10,6 +10,8 @@ const MySlice = createSlice({
     managementToken: null,
     studentInfo:null,
     studentToken:null,
+    teacherInfo:null,
+    teacherToken:null,
     // authorInfo: null,
     // authorToken: null,
     // affiliateInfo: null,
@@ -54,6 +56,14 @@ const MySlice = createSlice({
     studentLogout: (state) => {
       state.studentInfo = null;
       state.studentToken = null;
+    },
+    teacherLogin: (state, { payload }) => {
+      state.teacherInfo = payload.teacherInfo;
+      state.teacherToken = payload.teacherToken;
+    },
+    teacherLogout: (state) => {
+      state.teacherInfo = null;
+      state.teacherToken = null;
     },
     // authorLogin: (state, { payload }) => {
     //   state.authorInfo = payload.authorInfo;
@@ -104,7 +114,9 @@ export const {
   managementLogin,
   managementLogout,
   studentLogin,
-  studentLogout
+  studentLogout,
+  teacherLogin,
+  teacherLogout
   // handleUserAllOrder,
   // setDeliveryDetails,
   // addToMyCourses,

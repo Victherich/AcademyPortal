@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,6 +16,8 @@ import ManagementAnnouncements from './ManagementAnnouncements';
 import StudentFeedbacks from './StudentFeedbacks';
 import SchoolWeekManager from './SchoolTermCalender';
 import StudentResult from './StudentResult';
+import StudentResultFilter from './StudentResultFilter';
+import GetTeacherByClassId from './GetTeacherByClassId';
 
 // Styled Components
 const DashboardContainer = styled.div`
@@ -125,6 +127,48 @@ const Overlay = styled.div`
   z-index: 900;
 `;
 
+const Form = styled.form`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+`;
+
+
+
+const Button = styled.button`
+  grid-column: 1 / -1;
+  padding: 10px 20px;
+  background: #ff8095;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+
+  &:hover {
+    background: #e76880;
+  }
+`;
+
+
+
+const Select = styled.select`
+  padding: 5px;
+  outline: none;
+  cursor: pointer;
+`;
+
+
+
 // Content Components
 const HomeContent = () => <h1 style={{color:"purple"}}>Home Content</h1>;
 const ProfileContent = () => <h1>Profile Content</h1>;
@@ -136,6 +180,12 @@ const StudentDashboard = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState('profile');
   const studentInfo = useSelector(state=>state.studentInfo)
+  const [semesterId,setSemesterId]=useState(null)
+  const [classId,setClassId]=useState(null);
+  const [classes, setClasses] = useState([]);
+    const [semesters, setSemesters] = useState([]);
+    // console.log(studentInfo)
+
 
 
   
@@ -189,6 +239,8 @@ const StudentDashboard = () => {
     switch (activeMenu) {
       case 'profile':
         return <StudentUserDetails studentID={studentInfo.id}/>;
+        case 'classTeacher':
+        return <GetTeacherByClassId classId={studentInfo.class_id} studentID={studentInfo.id}  />;
         case 'schoolFees':
         return <StudentSchoolFees studentID={studentInfo.id}/>;
         case 'announcement':
@@ -197,13 +249,57 @@ const StudentDashboard = () => {
           return <StudentFeedbacks/>;
           case 'schoolCalender':
           return <SchoolWeekManager/>;
+          // case 'studentResultFilter':
+          // return <StudentResultFilter 
+          // setSemesterId={setSemesterId} 
+          // setClassId={setClassId} 
+          // semesterId={semesterId} classId={classId}/>;
+
           case 'studentResult':
-          return <StudentResult studentId={94} semesterId={6} classId={2}/>;
+          return <StudentResult 
+          studentId={studentInfo.id} 
+          semesterId={semesterId} classId={classId}/>;
       
       default:
         return <h1 style={{color:"purple",textAlign:"left",width:"100%"}}>Welcome to your Dashboard</h1>;
     }
   };
+
+
+
+
+  const [componentSwitch, setComponentSwitch]=useState(false)
+
+  const fetchClasses = async () => {
+    const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/fetch_classes.php');
+    const data = await response.json();
+    setClasses(data.classes || []);
+  };
+
+
+  const fetchSemesters = async () => {
+    try {
+      const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/fetch_semesters.php');
+      const data = await response.json();
+      if (data.success) setSemesters(data.semesters || []);
+    } catch {}
+  };
+
+
+
+   useEffect(() => {
+      
+      fetchClasses();
+      fetchSemesters();
+    }, []);
+
+
+    const handleSubmit = (e)=>{
+      e.preventDefault();
+      
+      handleMenuClick('studentResult')
+      setComponentSwitch(false)
+    }
 
   return (
     <DashboardContainer>
@@ -220,6 +316,13 @@ const StudentDashboard = () => {
             onClick={() => handleMenuClick('profile')}
           >
             Hi, {studentInfo.first_name}
+          </SidebarMenuItem>
+
+          <SidebarMenuItem
+            active={activeMenu === 'classTeacher'}
+            onClick={() => handleMenuClick('classTeacher')}
+          >
+            Class Teacher
           </SidebarMenuItem>
 
           <SidebarMenuItem
@@ -245,25 +348,33 @@ const StudentDashboard = () => {
 
           <SidebarMenuItem
             active={activeMenu === 'feedback'}
-            onClick={() => handleMenuClick('feedback')}
+            onClick={() =>{ handleMenuClick('feedback');setComponentSwitch(false)}}
           >
             Feedbacks to Management
           </SidebarMenuItem>
 
           <SidebarMenuItem
             active={activeMenu === 'subjects'}
-            onClick={() => handleMenuClick('subjects')}
+            onClick={() => {handleMenuClick('subjects');setComponentSwitch(false)}}
           >
             Subjects
           </SidebarMenuItem>
 
 
           <SidebarMenuItem
-            active={activeMenu === 'studentResult'}
-            onClick={() => handleMenuClick('studentResult')}
+            // active={activeMenu === 'studentResult'}
+            // onClick={() => handleMenuClick('studentResult')}
+            onClick={()=>setComponentSwitch(true)}
           >
             Results
           </SidebarMenuItem>
+
+          {/* <SidebarMenuItem
+            active={activeMenu === 'studentResultFilter'}
+            onClick={() => handleMenuClick('studentResultFilter')}
+          >
+            Results Filter
+          </SidebarMenuItem> */}
          
          
           <SidebarMenuItem
@@ -273,7 +384,43 @@ const StudentDashboard = () => {
           </SidebarMenuItem>
         </SidebarMenu>
       </Sidebar>
-      <ContentArea isOpen={menuOpen}>{renderContent()}</ContentArea>
+      {!componentSwitch&&<ContentArea isOpen={menuOpen}>{renderContent()}</ContentArea>}
+      {componentSwitch&&<ContentArea>
+      <Form onSubmit={handleSubmit}>
+   
+        <Select
+          value={classId}
+          onChange={(e) => setClassId(e.target.value)}
+          required
+        >
+          <option value="">Select Class</option>
+          {classes.map((cls) => (
+            <option key={cls.id} value={cls.id}>
+              {cls.level}
+            </option>
+          ))}
+        </Select>
+
+
+        <Select
+          value={semesterId}
+          onChange={(e) => setSemesterId(e.target.value)}
+          required
+        >
+          <option value="">Select Term</option>
+          {semesters.map((semester) => (
+            <option key={semester.id} value={semester.id}>
+              {semester.name}
+            </option>
+          ))}
+        </Select>
+        <Button type="submit"
+        active={activeMenu === 'studentResult'}
+
+        >Get Result</Button>
+       </Form>
+      </ContentArea>}
+    
     </DashboardContainer>
   );
 };
