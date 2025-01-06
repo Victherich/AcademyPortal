@@ -67,6 +67,8 @@ const StudentSchoolFees = ({ studentID }) => {
   const [error, setError] = useState('');
   const [paymentDetails,setPaymentDetails]= useState([])
 
+  // console.log(student)
+
  
     const fetchUserDetails = async () => {
       try {
@@ -193,7 +195,8 @@ const StudentSchoolFees = ({ studentID }) => {
               class_level: fee.class_level,
               semester_name: fee.semester_name,
               school_fee: fee.school_fee,
-              semester_id:fee.semester_id
+              semester_id:fee.semester_id,
+              class_id:8,
             });
 
             

@@ -22,6 +22,7 @@ import SchoolManagementSignup from './SchoolManagementSignup';
 import TeacherSignup from './TeacherSignup';
 import TeacherList from './AllTeachers';
 import StudentFeedbacks from './StudentFeedbacks';
+import TeacherFeedbacks from './TeacherFeedbacks';
 
 // Styled Components
 const DashboardContainer = styled.div`
@@ -226,6 +227,8 @@ const SchoolManagementDashboard = () => {
                   return <TeacherList/>;
                   case 'studentsFeedbacks':
                     return <StudentFeedbacks/>;
+                    case 'teachersFeedbacks':
+                    return <TeacherFeedbacks/>;
       default:
         return <h1 style={{color:"purple",textAlign:"left",width:"100%"}}>Welcome to your Dashboard</h1>;
     }
@@ -359,6 +362,13 @@ const SchoolManagementDashboard = () => {
             onClick={() => handleMenuClick('studentsFeedbacks')}
           >
            Students Feedbacks
+          </SidebarMenuItem>
+
+          <SidebarMenuItem
+            active={activeMenu === 'teachersFeedbacks'}
+            onClick={() => handleMenuClick('teachersFeedbacks')}
+          >
+           Teachers Feedbacks
           </SidebarMenuItem>
           
           <SidebarMenuItem

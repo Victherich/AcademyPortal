@@ -18,6 +18,8 @@ import SchoolWeekManager from './SchoolTermCalender';
 import StudentResult from './StudentResult';
 import StudentResultFilter from './StudentResultFilter';
 import GetTeacherByClassId from './GetTeacherByClassId';
+import TeacherClassAssignment from './TeacherClassAssignment';
+import StudentClassAssignment from './StudentClassAssignment';
 
 // Styled Components
 const DashboardContainer = styled.div`
@@ -184,7 +186,7 @@ const StudentDashboard = () => {
   const [classId,setClassId]=useState(null);
   const [classes, setClasses] = useState([]);
     const [semesters, setSemesters] = useState([]);
-    // console.log(studentInfo)
+    console.log(studentInfo)
 
 
 
@@ -240,11 +242,13 @@ const StudentDashboard = () => {
       case 'profile':
         return <StudentUserDetails studentID={studentInfo.id}/>;
         case 'classTeacher':
-        return <GetTeacherByClassId classId={studentInfo.class_id} studentID={studentInfo.id}  />;
+        return <GetTeacherByClassId studentID={studentInfo.id}  />;
         case 'schoolFees':
         return <StudentSchoolFees studentID={studentInfo.id}/>;
         case 'announcement':
         return <ManagementAnnouncements/>;
+          case 'assignments':
+          return <StudentClassAssignment class_id={studentInfo.class_id}/>;
         case 'feedback':
           return <StudentFeedbacks/>;
           case 'schoolCalender':
@@ -313,35 +317,42 @@ const StudentDashboard = () => {
        
           <SidebarMenuItem
             active={activeMenu === 'profile'}
-            onClick={() => handleMenuClick('profile')}
+            onClick={() => {handleMenuClick('profile');setComponentSwitch(false)}}
           >
             Hi, {studentInfo.first_name}
           </SidebarMenuItem>
 
           <SidebarMenuItem
             active={activeMenu === 'classTeacher'}
-            onClick={() => handleMenuClick('classTeacher')}
+            onClick={() => {handleMenuClick('classTeacher');setComponentSwitch(false)}}
           >
             Class Teacher
           </SidebarMenuItem>
 
           <SidebarMenuItem
             active={activeMenu === 'announcement'}
-            onClick={() => handleMenuClick('announcement')}
+            onClick={() => {handleMenuClick('announcement');setComponentSwitch(false)}}
           >
             Announcement
           </SidebarMenuItem>
 
           <SidebarMenuItem
+            active={activeMenu === 'assignments'}
+            onClick={() => {handleMenuClick('assignments');setComponentSwitch(false)}}
+          >
+            Assignments
+          </SidebarMenuItem>
+
+          <SidebarMenuItem
             active={activeMenu === 'schoolFees'}
-            onClick={() => handleMenuClick('schoolFees')}
+            onClick={() => {handleMenuClick('schoolFees');setComponentSwitch(false)}}
           >
             School Fees
           </SidebarMenuItem>
 
           <SidebarMenuItem
             active={activeMenu === 'schoolCalender'}
-            onClick={() => handleMenuClick('schoolCalender')}
+            onClick={() => {handleMenuClick('schoolCalender');setComponentSwitch(false)}}
           >
             Term week Calender
           </SidebarMenuItem>

@@ -199,7 +199,7 @@ const TeacherFeedbacks = () => {
         Swal.fire({text:"Please wait..."})
         Swal.showLoading(); 
         try {
-          const response = await fetch(`https://ephadacademyportal.com.ng/ephad_api/delete_student_feedback.php`, {
+          const response = await fetch(`https://ephadacademyportal.com.ng/ephad_api/delete_teacher_feedback.php`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ id }),
@@ -223,7 +223,7 @@ const TeacherFeedbacks = () => {
   return (
     <Container>
       {location.pathname==="/teacherdashboard"&&<Title>{form.id ? 'Edit Feedback' : 'Create Feedback'}</Title>}
-      {location.pathname!=="/teacherdashboard"&&<Title>Feedbacks</Title>}
+      {location.pathname!=="/teacherdashboard"&&<Title>Teachers Feedbacks</Title>}
      {location.pathname==="/teacherdashboard"&& <Form onSubmit={form.id ? handleEditSubmit : handleSubmit}>
         <Input
           type="text"

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
@@ -25,6 +25,7 @@ import StudentFeedbacks from './StudentFeedbacks';
 import { teacherLogout } from '../Features/Slice';
 import TeacherUserDetails from './TeacherUserDetails';
 import TeacherFeedbacks from './TeacherFeedbacks';
+import TeacherClassAssignment from './TeacherClassAssignment';
 
 // Styled Components
 const DashboardContainer = styled.div`
@@ -145,6 +146,8 @@ const TeacherDashboard = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState('profile');
   const teacherInfo = useSelector(state=>state.teacherInfo)
+  console.log(teacherInfo)
+  //  const [user,setUser]=useState({});
   
   // console.log(managementInfo)
 
@@ -229,10 +232,20 @@ const TeacherDashboard = () => {
                   // return <TeacherList/>;
                   case 'teacherFeedbacks':
                     return <TeacherFeedbacks/>;
+                    case 'assignments':
+                      return <TeacherClassAssignment class_id={teacherInfo.class_id}/>;
       default:
         return <h1 style={{color:"purple",textAlign:"left",width:"100%"}}>Welcome to your Dashboard</h1>;
     }
   };
+  
+
+
+
+
+
+
+
 
   return (
     <DashboardContainer>
@@ -256,6 +269,13 @@ const TeacherDashboard = () => {
             onClick={() => handleMenuClick('announcements')}
           >
             Announcements
+          </SidebarMenuItem>
+
+          <SidebarMenuItem
+            active={activeMenu === 'assignments'}
+            onClick={() => handleMenuClick('assignments')}
+          >
+            Class Assignments
           </SidebarMenuItem>
 
 

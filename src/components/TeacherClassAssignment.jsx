@@ -98,68 +98,59 @@ const Value = styled.span`
   color: #333;
 `;
 
-const StudentFeedbacks = () => {
-  const [form, setForm] = useState({ id: '', title: '', content: '' });
+const TeacherClassAssignment = ({class_id}) => {
+  const [form, setForm] = useState({ id: '', title: '', content: '',class_id:class_id });
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
   const [announcements, setAnnouncements] = useState([]);
   const location = useLocation();
-
+ 
   useEffect(() => {
-    fetchAnnouncements();
+    fetchAssignments();
   }, []);
 
-  const fetchAnnouncements = async () => {
+  const fetchAssignments = async () => {
     try {
-      const response = await fetch(`https://ephadacademyportal.com.ng/ephad_api/fetch_students_feedbacks.php`);
+      const response = await fetch(
+        `https://ephadacademyportal.com.ng/ephad_api/fetch_class_assignment.php?class_id=${class_id}`
+      );
       const data = await response.json();
       if (data.success) {
-        setAnnouncements(data.student_feedbacks);
-        // console.log(data.student_feedbacks)
+        setAnnouncements(data.assignments); // Updated to use 'assignments'
+        // console.log(data.assignments)
       } else {
-        setError(data.error || 'Error fetching announcements.');
+        setError(data.error || 'Error fetching assignments.');
       }
     } catch (err) {
-      setError('Failed to fetch announcements. Please try again.');
+      setError('Failed to fetch assignments. Please try again.');
     }
   };
+
 
 
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-     Swal.fire({
-      title: 'Are you sure?',
-      text: 'This action cannot be undone!',
-      icon: 'warning',
-      showCancelButton: true,
-    }).then(async (result) => {
-      if (result.isConfirmed) {
-        Swal.fire({text:"Please wait..."})
-        Swal.showLoading(); 
+    Swal.fire({ text: 'Please wait...', showConfirmButton: false });
     try {
-      const response = await fetch(`https://ephadacademyportal.com.ng/ephad_api/student_create_feedback.php`, {
+      const response = await fetch(`https://ephadacademyportal.com.ng/ephad_api/create_class_assignment.php`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       });
       const data = await response.json();
       if (data.success) {
-        Swal.fire({ text: 'Feedback sent successfully!', icon: 'success' });
-        fetchAnnouncements();
+        Swal.fire({ text: 'Assignment created successfully!', icon: 'success' });
+        fetchAssignments();
         setForm({ id: '', title: '', content: '' });
       } else {
-        Swal.fire({ text: data.error || 'Failed to create feedback.', icon: 'error' });
+        Swal.fire({ text: data.error || 'Failed to create assignment.', icon: 'error' });
       }
     } catch {
       Swal.fire({ text: 'An error occurred. Please try again.', icon: 'error' });
     }
-  }})
   };
-
-
 
   const editAnnouncement = (announcement) => {
     setForm(announcement);
@@ -170,18 +161,18 @@ const StudentFeedbacks = () => {
     e.preventDefault();
     Swal.fire({ text: 'Please wait...', showConfirmButton: false });
     try {
-      const response = await fetch(`https://ephadacademyportal.com.ng/ephad_api/update_announcement.php`, {
+      const response = await fetch(`https://ephadacademyportal.com.ng/ephad_api/update_class_assignment.php`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       });
       const data = await response.json();
       if (data.success) {
-        Swal.fire({ text: 'Announcement updated successfully!', icon: 'success' });
-        fetchAnnouncements();
+        Swal.fire({ text: 'Assignment updated successfully!', icon: 'success' });
+        fetchAssignments();
         setForm({ id: '', title: '', content: '' });
       } else {
-        Swal.fire({ text: data.error || 'Failed to update announcement.', icon: 'error' });
+        Swal.fire({ text: data.error || 'Failed to update assignment.', icon: 'error' });
       }
     } catch {
       Swal.fire({ text: 'An error occurred. Please try again.', icon: 'error' });
@@ -199,17 +190,17 @@ const StudentFeedbacks = () => {
         Swal.fire({text:"Please wait..."})
         Swal.showLoading(); 
         try {
-          const response = await fetch(`https://ephadacademyportal.com.ng/ephad_api/delete_student_feedback.php`, {
+          const response = await fetch(`https://ephadacademyportal.com.ng/ephad_api/delete_class_assignment.php`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ id }),
           });
           const data = await response.json();
           if (data.success) {
-            Swal.fire({ text: 'Announcement deleted successfully!', icon: 'success' });
-            fetchAnnouncements();
+            Swal.fire({ text: 'Assignment deleted successfully!', icon: 'success' });
+            fetchAssignments();
           } else {
-            Swal.fire({ text: data.error || 'Failed to delete announcement.', icon: 'error' });
+            Swal.fire({ text: data.error || 'Failed to delete assignment.', icon: 'error' });
           }
         } catch {
           Swal.fire({ text: 'An error occurred. Please try again.', icon: 'error' });
@@ -222,9 +213,9 @@ const StudentFeedbacks = () => {
 
   return (
     <Container>
-      {location.pathname==="/studentdashboard"&&<Title>{form.id ? 'Edit Feedback' : 'Create Feedback'}</Title>}
-      {location.pathname!=="/studentdashboard"&&<Title>Students Feedbacks</Title>}
-     {location.pathname==="/studentdashboard"&& <Form onSubmit={form.id ? handleEditSubmit : handleSubmit}>
+      {location.pathname==="/teacherdashboard"&&<Title>{form.id ? 'Edit Assignment' : 'Create Assignment'}</Title>}
+      {location.pathname!=="/teacherdashboard"&&<Title>Assignments</Title>}
+     {location.pathname==="/teacherdashboard"&& <Form onSubmit={form.id ? handleEditSubmit : handleSubmit}>
         <Input
           type="text"
           placeholder="Title"
@@ -239,24 +230,26 @@ const StudentFeedbacks = () => {
           onChange={(e) => setForm({ ...form, content: e.target.value })}
           required
         />
-        <Button type="submit">{form.id ? 'Update Feedback' : 'Send Feedback'}</Button>
+        <Button type="submit">{form.id ? 'Update Assignment' : 'Add Assignment'}</Button>
         {form.id&&<Button type="button" onClick={()=>setForm({...form, id: '',title:'',content:""})}>Clear</Button>}
       </Form>}
-      {location.pathname==="/managementdashboard"&&<AnnouncementGrid>
+
+    
+      <AnnouncementGrid>
         {announcements.map((announcement) => (
           <AnnouncementCard key={announcement.id}>
             <Label>Title:</Label>
             <Value>{announcement.title}</Value>
             <Label>Content:</Label>
             <Value>{announcement.content}</Value>
-           { location.pathname==="/studentdashboard"&&<Button onClick={() => editAnnouncement(announcement)}>Edit</Button>}
-           {<Button onClick={() => deleteAnnouncement(announcement.id)}>Delete</Button>}
+           { location.pathname==="/teacherdashboard"&&<Button onClick={() => editAnnouncement(announcement)}>Edit</Button>}
+           { location.pathname==="/teacherdashboard"&&<Button onClick={() => deleteAnnouncement(announcement.id)}>Delete</Button>}
           </AnnouncementCard>
         ))}
-      </AnnouncementGrid>}
+      </AnnouncementGrid>
       {error && <p style={{ color: 'red', textAlign: 'center' }}>{error}</p>}
     </Container>
   );
 };
 
-export default StudentFeedbacks;
+export default TeacherClassAssignment;

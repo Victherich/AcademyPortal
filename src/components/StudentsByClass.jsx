@@ -175,11 +175,11 @@ const fetchUserDetailsById = async () => {
           setUser(data.user);
           console.log(data)
         } else {
-          setError(data.error || 'Error fetching user details.');
+          // setError(data.error || 'Error fetching user details.');
 
         }
       } catch (err) {
-        setError('Failed to fetch user details. Please try again.');
+        // setError('Failed to fetch user details. Please try again.');
       }
     };
 
