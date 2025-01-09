@@ -143,6 +143,7 @@ const TeacherClassAssignment = ({class_id}) => {
       if (data.success) {
         Swal.fire({ text: 'Assignment created successfully!', icon: 'success' });
         fetchAssignments();
+        window.location.reload();
         setForm({ id: '', title: '', content: '' });
       } else {
         Swal.fire({ text: data.error || 'Failed to create assignment.', icon: 'error' });

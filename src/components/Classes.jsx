@@ -295,10 +295,10 @@ const Classes = () => {
         >
           <option value="">Select Class</option>
           <option value="CRECHE">CRECHE</option>
-          <option value="PRE-NURSARY">PRE-NURSARY</option>
-          <option value="NURSARY 1">NURSARY 1</option>
-          <option value="NURSARY 2">NURSARY 2</option>
-          <option value="NURSARY 3">NURSARY 3</option>
+          <option value="PRE-NURSERY">PRE-NURSERY</option>
+          <option value="NURSERY 1">NURSERY 1</option>
+          <option value="NURSERY 2">NURSERY 2</option>
+          <option value="NURSERY 3">NURSERY 3</option>
             <option value="PRIMARY 1">PRIMARY 1</option>
             <option value="PRIMARY 2">PRIMARY 2</option>
             <option value="PRIMARY 3">PRIMARY 3</option>
@@ -335,7 +335,7 @@ const Classes = () => {
         {classes.sort((a,b)=>b.id-a.id).map((classItem) => (
           <ClassCard key={classItem.id}>
             {/* <Label>Class Name:</Label> */}
-            <Value>{classItem.class_name}</Value>
+            {/* <Value>{classItem.class_name}</Value> */}
             <Label>Level:</Label>
             <Value>{classItem.level}</Value>
             {/* <Label>Department:</Label> */}

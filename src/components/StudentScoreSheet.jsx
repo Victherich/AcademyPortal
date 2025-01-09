@@ -782,3 +782,235 @@ const StudentScoreSheet = () => {
 };
 
 export default StudentScoreSheet;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React, { useState, useEffect } from 'react';
+// import styled from 'styled-components';
+
+// const ScoreSheetContainer = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   padding: 20px;
+//   background-color: #f8f9fa;
+//   min-height: 100vh;
+//   width: 100%;
+// `;
+
+// const Title = styled.h1`
+//   margin-bottom: 20px;
+//   color: #343a40;
+// `;
+
+// const TableContainer = styled.div`
+//   overflow-x: auto;
+//   width: 100%;
+//   max-width: 1200px;
+// `;
+
+// const ScoreTable = styled.table`
+//   width: 100%;
+//   border-collapse: collapse;
+//   margin: 20px 0;
+//   background-color: #ffffff;
+//   border-radius: 8px;
+//   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+//   th, td {
+//     padding: 12px;
+//     text-align: center;
+//     border: 1px solid #ddd;
+//   }
+
+//   th {
+//     background-color: #007bff;
+//     color: #fff;
+//     font-weight: bold;
+//   }
+
+//   td {
+//     font-size: 14px;
+//   }
+// `;
+
+// const Total = styled.span`
+//   font-weight: bold;
+//   color: #343a40;
+// `;
+
+// const InputField = styled.input`
+//   width: 60px;
+//   padding: 5px;
+//   margin-top: 5px;
+//   border: 1px solid #ccc;
+//   border-radius: 4px;
+//   text-align: center;
+// `;
+
+// const SaveButton = styled.button`
+//   margin: 10px 5px;
+//   padding: 10px 20px;
+//   font-size: 16px;
+//   background-color: #007bff;
+//   color: #fff;
+//   border: none;
+//   border-radius: 4px;
+//   cursor: pointer;
+//   &:hover {
+//     background-color: #0056b3;
+//   }
+// `;
+
+// const OverallTotal = styled.div`
+//   margin-top: 20px;
+//   font-size: 18px;
+//   font-weight: bold;
+//   color: #007bff;
+// `;
+
+// const StudentScoreSheet = () => {
+//   const subjects = Array.from({ length: 20 }, (_, i) => `Subject ${i + 1}`);
+//   const [scores, setScores] = useState(
+//     subjects.map(() => ({ assignment: 0, test: 0, exam: 0 }))
+//   );
+
+//   const [inputs, setInputs] = useState(
+//     subjects.map(() => ({ assignment: 0, test: 0, exam: 0 }))
+//   );
+
+//   const handleInputChange = (index, type, value) => {
+//     setInputs((prevInputs) =>
+//       prevInputs.map((input, i) =>
+//         i === index ? { ...input, [type]: parseInt(value) || 0 } : input
+//       )
+//     );
+//   };
+
+//   const handleSaveChanges = () => {
+//     setScores((prevScores) =>
+//       prevScores.map((score, index) => ({
+//         assignment: Math.max(0, score.assignment + inputs[index].assignment),
+//         test: Math.max(0, score.test + inputs[index].test),
+//         exam: Math.max(0, score.exam + inputs[index].exam),
+//       }))
+//     );
+
+//     // Reset inputs to zero
+//     setInputs(subjects.map(() => ({ assignment: 0, test: 0, exam: 0 })));
+//   };
+
+//   const calculateTotal = (score) => score.assignment + score.test + score.exam;
+
+//   const calculateOverallTotal = () =>
+//     scores.reduce((sum, score) => sum + calculateTotal(score), 0);
+
+//   const handleCloseScoreSheet = () => {
+//     alert("Closing the score sheet!");
+//     // Logic for closing can be added here
+//   };
+
+//   useEffect(() => {
+//     // Simulate fetching data from an API
+//     const fetchScores = async () => {
+//       // Mock data fetching
+//       const fetchedScores = subjects.map(() => ({
+//         assignment: Math.floor(Math.random() * 10),
+//         test: Math.floor(Math.random() * 10),
+//         exam: Math.floor(Math.random() * 10),
+//       }));
+//       setScores(fetchedScores);
+//     };
+
+//     fetchScores();
+//   }, []);
+
+//   return (
+//     <ScoreSheetContainer>
+//       <Title>Student Score Sheet</Title>
+//       <TableContainer>
+//         <ScoreTable>
+//           <thead>
+//             <tr>
+//               <th>Subject</th>
+//               <th>Assignment</th>
+//               <th>Test</th>
+//               <th>Exam</th>
+//               <th>Total</th>
+//             </tr>
+//           </thead>
+//           <tbody>
+//             {scores.map((score, index) => (
+//               <tr key={index}>
+//                 <td>{subjects[index]}</td>
+//                 <td>
+//                   <div>
+//                     <Total>{score.assignment}</Total>
+//                     <InputField
+//                       type="number"
+//                       value={inputs[index].assignment}
+//                       onChange={(e) =>
+//                         handleInputChange(index, "assignment", e.target.value)
+//                       }
+//                     />
+//                   </div>
+//                 </td>
+//                 <td>
+//                   <div>
+//                     <Total>{score.test}</Total>
+//                     <InputField
+//                       type="number"
+//                       value={inputs[index].test}
+//                       onChange={(e) =>
+//                         handleInputChange(index, "test", e.target.value)
+//                       }
+//                     />
+//                   </div>
+//                 </td>
+//                 <td>
+//                   <div>
+//                     <Total>{score.exam}</Total>
+//                     <InputField
+//                       type="number"
+//                       value={inputs[index].exam}
+//                       onChange={(e) =>
+//                         handleInputChange(index, "exam", e.target.value)
+//                       }
+//                     />
+//                   </div>
+//                 </td>
+//                 <td>
+//                   <Total>{calculateTotal(score)}</Total>
+//                 </td>
+//               </tr>
+//             ))}
+//           </tbody>
+//         </ScoreTable>
+//       </TableContainer>
+//       <div>
+//         <SaveButton onClick={handleSaveChanges}>Save All Changes</SaveButton>
+//         <SaveButton onClick={handleCloseScoreSheet}>Close Score Sheet</SaveButton>
+//       </div>
+//       <OverallTotal>Overall Total: {calculateOverallTotal()}</OverallTotal>
+//     </ScoreSheetContainer>
+//   );
+// };
+
+// export default StudentScoreSheet;
+

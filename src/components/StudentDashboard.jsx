@@ -169,6 +169,11 @@ const Select = styled.select`
   cursor: pointer;
 `;
 
+const Title = styled.h2`
+  color:purple;
+  text-align:center;
+`
+
 
 
 // Content Components
@@ -186,7 +191,7 @@ const StudentDashboard = () => {
   const [classId,setClassId]=useState(null);
   const [classes, setClasses] = useState([]);
     const [semesters, setSemesters] = useState([]);
-    console.log(studentInfo)
+    // console.log(studentInfo)
 
 
 
@@ -230,6 +235,7 @@ const StudentDashboard = () => {
   const handleMenuClick = (menu) => {
     setActiveMenu(menu);
     setMenuOpen(false); // Close menu on mobile when a menu item is clicked
+    window.scroll(0,0)
   };
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
@@ -238,6 +244,7 @@ const StudentDashboard = () => {
 
   // Map menu options to content
   const renderContent = () => {
+
     switch (activeMenu) {
       case 'profile':
         return <StudentUserDetails studentID={studentInfo.id}/>;
@@ -298,12 +305,63 @@ const StudentDashboard = () => {
     }, []);
 
 
+
+
     const handleSubmit = (e)=>{
-      e.preventDefault();
-      
-      handleMenuClick('studentResult')
-      setComponentSwitch(false)
+      e.preventDefault();      
+      checkFeesPayment();
+     
     }
+
+const studentId = studentInfo.id
+
+
+    const checkFeesPayment = async () => {
+      const loadingAlert = Swal.fire({text:"Please wait..."});
+      Swal.showLoading();
+      console.log(studentId, semesterId, classId)
+      try {
+          const response = await fetch('https://ephadacademyportal.com.ng/ephad_api/fees_payment_check.php', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                  student_id: studentId,
+                  semester_id: semesterId,
+                  class_id: classId,
+              }),
+          });
+
+          
+  
+          if (!response.ok) {
+              throw new Error('Network response was not ok');
+          }
+  
+          const data = await response.json();
+  
+          if (data.success) {
+              // return data.exists; 
+              if(data.exists===true){
+                handleMenuClick('studentResult')
+                setComponentSwitch(false)
+                Swal.fire({icon:"success",timer:"1000"})
+              }else{
+                Swal.fire({text:"Kindly pay your school fees for the selected class and term before you can see the result. Thanks"})
+              }
+              // true if exists, false otherwise
+          } else {
+              throw new Error(data.error || 'Unexpected error occurred');
+          }
+      } catch (error) {
+          console.error('Error checking fees payment:', error);
+          return false; // Default to false if there's an error
+      }finally{
+        loadingAlert.close();
+      }
+  };
+  
 
   return (
     <DashboardContainer>
@@ -364,18 +422,18 @@ const StudentDashboard = () => {
             Feedbacks to Management
           </SidebarMenuItem>
 
-          <SidebarMenuItem
+          {/* <SidebarMenuItem
             active={activeMenu === 'subjects'}
             onClick={() => {handleMenuClick('subjects');setComponentSwitch(false)}}
           >
             Subjects
-          </SidebarMenuItem>
+          </SidebarMenuItem> */}
 
 
           <SidebarMenuItem
             // active={activeMenu === 'studentResult'}
             // onClick={() => handleMenuClick('studentResult')}
-            onClick={()=>setComponentSwitch(true)}
+            onClick={()=>{setComponentSwitch(true);window.scroll(0,0)}}
           >
             Results
           </SidebarMenuItem>
@@ -397,8 +455,9 @@ const StudentDashboard = () => {
       </Sidebar>
       {!componentSwitch&&<ContentArea isOpen={menuOpen}>{renderContent()}</ContentArea>}
       {componentSwitch&&<ContentArea>
+        <Title>Select Class and Term for your result</Title>
       <Form onSubmit={handleSubmit}>
-   
+        
         <Select
           value={classId}
           onChange={(e) => setClassId(e.target.value)}

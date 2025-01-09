@@ -196,7 +196,7 @@ const StudentSchoolFees = ({ studentID }) => {
               semester_name: fee.semester_name,
               school_fee: fee.school_fee,
               semester_id:fee.semester_id,
-              class_id:8,
+              class_id:student.class_id,
             });
 
             
@@ -267,7 +267,7 @@ const paidFeeIds = new Set(paymentDetails.map(payment => payment.fee_id));
           return (
           <Card key={fee.fee_id}>
             <CardHeader>{fee.class_level}</CardHeader>
-            <CardDetail><strong>Level:</strong> {fee.class_level}{fee.semester_id}</CardDetail>
+            <CardDetail><strong>Level:</strong> {fee.class_level}</CardDetail>
             <CardDetail><strong>Department:</strong> {fee.department_name}</CardDetail>
             <CardDetail><strong>Term:</strong> {fee.semester_name}</CardDetail>
             <CardDetail><strong>School Fee:</strong> NGN {fee.school_fee}</CardDetail>

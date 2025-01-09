@@ -250,7 +250,7 @@ const SchoolFees = () => {
             </option>
           ))}
         </Select>
-        {/* <Select
+        <Select
           value={form.department_id}
           onChange={(e) => handleFormChange('department_id', e.target.value)}
           required
@@ -261,7 +261,7 @@ const SchoolFees = () => {
               {dept.name}
             </option>
           ))}
-        </Select> */}
+        </Select>
         <Button type="submit">{form.id ? 'Update Fee' : 'Add Fee'}</Button>
         {form.id && <Button type="button" onClick={() => setForm({ id: '', amount: '', department_id: '', class_id: '', semester_id: '' })}>Clear</Button>}
      
