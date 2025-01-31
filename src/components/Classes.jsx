@@ -45,7 +45,7 @@ const Input = styled.input`
 const Button = styled.button`
   grid-column: 1 / -1;
   padding: 10px 20px;
-  background: #ff8095;
+  background: #8080FF;
   color: white;
   border: none;
   border-radius: 5px;
@@ -53,7 +53,7 @@ const Button = styled.button`
   cursor: pointer;
 
   &:hover {
-    background: #e76880;
+    background:#9000FF;
   }
 `;
 

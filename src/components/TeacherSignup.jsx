@@ -68,7 +68,7 @@ const PasswordToggle = styled.span`
 
 const Button = styled.button`
   padding: 15px;
-  background: rgba(255, 0, 43, 0.5);
+  background: #8080FF;
   color: white;
   border: none;
   border-radius: 5px;
@@ -124,10 +124,31 @@ const TeacherSignup = () => {
     setShowPassword(!showPassword);
   };
 
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setFormData({ ...formData, [name]: value.trim() });
+  // };
+
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+  
+    let formattedValue = value.trim(); // Default: trim whitespace
+  
+    if (name === "firstName" || name === "lastName") {
+      formattedValue = formattedValue.toUpperCase(); // Convert to uppercase
+    } else if (name === "email") {
+      formattedValue = formattedValue.toLowerCase(); // Convert to lowercase
+    } else if (name === "phoneNumber") {
+      formattedValue = formattedValue.replace(/\s+/g, ""); // Remove spaces
+    }
+  
+    setFormData({ ...formData, [name]: formattedValue });
   };
+  
+
+
+  
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];

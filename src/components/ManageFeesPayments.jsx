@@ -645,7 +645,7 @@ const Container = styled.div`
 
 const Title = styled.h1`
   text-align: center;
-  color: #4caf50;
+  color:#8080FF;
   margin-bottom: 20px;
 `;
 
@@ -667,14 +667,14 @@ const Select = styled.select`
 
 const Button = styled.button`
   padding: 10px 20px;
-  background-color: #4caf50;
+  background-color: #8080FF;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 
   &:hover {
-    background-color: #45a049;
+    background-color: #9000FF;
   }
 `;
 

@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import ManagementEditPhoneNumberModal from './ManagementEditPhoneNumber';
 import StudentEditPhoneNumberModal from './StudentEditPhoneNumber';
 import StudentChangePasswordModal from './StudentChangePassword';
+import { useLocation } from 'react-router-dom';
 
 const fadeIn = keyframes`
   from {
@@ -97,12 +98,14 @@ const Button = styled.button`
 
 const StudentUserDetails = ({ studentID}) => {
   // const {user,setUser}=useContext(Context)
+  const location = useLocation();
 
       const [department, setDepartment] = useState(null);
       const [user, setUser] = useState(null);
   const [error, setError] = useState('');
   const {studentInfoUrl,mainDomain}=useContext(Context);
    const [showModal,setShowModal]=useState(false)
+   const [showModal2,setShowModal2]=useState(false)
   console.log(studentID)
 
   
@@ -222,6 +225,16 @@ useEffect(() => {
 
 
 
+useEffect(()=>{
+ if(user?.suspended===1&&location.pathname==="/studentdashboard"){
+  Swal.fire({icon:"info", 
+    text:"You are currently suspended, kindly contact the management. Thanks",
+  allowOutsideClick:false,
+showConfirmButton:false})
+ }
+},[user?.suspended])
+
+
 
 
   if (error) {
@@ -272,7 +285,7 @@ useEffect(() => {
             <Label>Class:</Label>
             <Value>{classData?.level}</Value>
           </Detail>
-          <Button onClick={() => setShowModal(true)}>Edit Phone Number</Button>
+          <Button onClick={() => setShowModal2(true)}>Edit Phone Number</Button>
           <Button onClick={() => setShowModal(true)}>Change Password</Button>
         </DetailsContainer>
       ) : (
@@ -281,8 +294,8 @@ useEffect(() => {
 
 <StudentEditPhoneNumberModal
       userId={studentID}
-      showModal={showModal}
-      setShowModal={setShowModal}
+      showModal={showModal2}
+      setShowModal={setShowModal2}
       fetchUserDetails={fetchUserDetails}
       />
 

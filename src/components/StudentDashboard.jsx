@@ -74,7 +74,7 @@ const SidebarMenu = styled.ul`
 const SidebarMenuItem = styled.li`
   padding: 15px 20px;
   cursor: pointer;
-  background: ${(props) => (props.active ? 'rgba(255,0,43,0.5);' : 'transparent')};
+  background: ${(props) => (props.active ? '#8080FF' : 'transparent')};
   color: ${(props)=>(props.active ? 'white':"purple")};
   // color:white;
 
@@ -83,7 +83,7 @@ const SidebarMenuItem = styled.li`
 
   &:hover {
     // background: #3b8d41;
-    background:rgba(255,0,43,0.3);
+    background:#8080FF;
   }
 `;
 
@@ -149,7 +149,7 @@ const Form = styled.form`
 const Button = styled.button`
   grid-column: 1 / -1;
   padding: 10px 20px;
-  background: #ff8095;
+  background: #8080FF;
   color: white;
   border: none;
   border-radius: 5px;
@@ -157,7 +157,7 @@ const Button = styled.button`
   cursor: pointer;
 
   &:hover {
-    background: #e76880;
+    background: #9000FF;
   }
 `;
 

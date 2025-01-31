@@ -281,7 +281,7 @@ const PasswordToggle = styled.span`
 
 const Button = styled.button`
   padding: 15px;
-  background: rgba(255, 0, 43, 0.5);
+  background: #8080FF;
   color: white;
   border: none;
   border-radius: 5px;

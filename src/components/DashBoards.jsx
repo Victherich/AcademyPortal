@@ -7,7 +7,7 @@ const DashboardContainer = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 50px;
-background:rgba(255,0,43,0.5);
+background:#8080FF;
 
   color: white;
 `;
@@ -38,8 +38,8 @@ color:rgba(128,0,128,0.8);
   cursor:pointer;
 
   &:hover {
-    transform: scale(1.05);
-    background: #FFD700;
+    // transform: scale(1.05);
+    background: rgba(128,0,128,0.5);
     color: white;
   }
 `;

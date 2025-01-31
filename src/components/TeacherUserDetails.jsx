@@ -3,6 +3,8 @@ import styled, { keyframes } from 'styled-components';
 import { Context } from './Context';
 import ManagementEditPhoneNumberModal from './ManagementEditPhoneNumber';
 import TeacherEditPhoneNumberModal from './TeacherEditPhoneNumber';
+import Swal from 'sweetalert2';
+import { useLocation } from 'react-router-dom';
 
 const fadeIn = keyframes`
   from {
@@ -99,7 +101,8 @@ const TeacherUserDetails = ({ managementID}) => {
   const [error, setError] = useState('');
   const {managementInfoUrl,mainDomain}=useContext(Context);
   const [showModal,setShowModal]=useState(false)
-  console.log(managementID)
+  const location = useLocation();
+  ////console.log(managementID)
 
   
     const fetchUserDetails = async () => {
@@ -116,7 +119,7 @@ const TeacherUserDetails = ({ managementID}) => {
         const data = await response.json();
         if (data.success) {
           setUser(data.user);
-          console.log(data)
+          // console.log(data.user)
         } else {
           setError(data.error || 'Error fetching user details.');
 
@@ -130,6 +133,57 @@ const TeacherUserDetails = ({ managementID}) => {
     useEffect(() => {
     fetchUserDetails();
   }, [managementID]);
+
+const [classData, setClassData] = useState(null);
+// const [loading, setLoading] = useState(true);
+// const [error, setError] = useState(null);
+
+useEffect(() => {
+    const fetchClass = async () => {
+        // setLoading(true);
+        // setError(null);
+
+        try {
+            const response = await fetch(`https://ephadacademyportal.com.ng/ephad_api/fetch_class_by_id.php?id=${user?.class_id}`);
+            
+            if (!response.ok) {
+                // throw new Error(`Error: ${response.status} - ${response.statusText}`);
+                Swal.fire({text:response.status - response.statusText})
+            }
+
+            const data = await response.json();
+
+            if (data.success) {
+                setClassData(data.class);
+                // ////console.log(data.class)
+            } else {
+                // throw new Error(data.error || "Failed to fetch class.");
+                Swal.fire({text:data.error|| "Failed to fetch department."})
+            }
+        } catch (err) {
+            // setError(err.message);
+            Swal.fire({text:err.message})
+        } finally {
+            // setLoading(false);
+        }
+    };
+
+    if (user?.class_id) {
+        fetchClass();
+    }
+}, [user?.class_id]);
+
+
+useEffect(()=>{
+ if(user?.suspended===1&&location.pathname==="/teacherdashboard"){
+  Swal.fire({icon:"info", 
+    text:"You are currently suspended, kindly contact the management. Thanks",
+  allowOutsideClick:false,
+showConfirmButton:false})
+ }
+},[user?.suspended])
+
+
 
   if (error) {
     return (
@@ -168,8 +222,12 @@ const TeacherUserDetails = ({ managementID}) => {
             <Value>{user.phone_number}</Value>
           </Detail>
           <Detail>
-            <Label>Management ID:</Label>
+            <Label>Teacher ID:</Label>
             <Value>{user.management_id}</Value>
+          </Detail>
+          <Detail>
+            <Label>Class:</Label>
+            <Value>{classData?.level}</Value>
           </Detail>
           <Button onClick={() => setShowModal(true)}>Edit Phone Number</Button>
         </DetailsContainer>

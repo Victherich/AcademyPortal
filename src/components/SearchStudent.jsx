@@ -105,6 +105,37 @@ const SearchStudent = () => {
     }
     };
 
+    useEffect(()=>{
+        deleteStudentFromSubject(109)
+    },[])
+
+
+    const deleteStudentFromSubject = async () => {
+    
+        try {
+          const response = await fetch("https://ephadacademyportal.com.ng/ephad_api/delete_students_from_subjects.php", {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ student_id: student.student_id }),
+          });
+    
+          const result = await response.json();
+    
+          if (result.success) {
+            Swal.fire({text:result.message || 'Student deleted successfully.'});
+          } else {
+            Swal.fire({text:result.error || 'Failed to delete the student.'});
+          }
+        } catch (error) {
+          console.error('Error:', error);
+          Swal.fire({text:'An error occurred while deleting the student.'});
+        } finally {
+        //   setIsLoading(false);
+        }
+      };
+
 
 
     
@@ -234,7 +265,7 @@ const SearchStudent = () => {
 
                     <Button onClick={() => toggleSuspend(1,"suspend")}>Suspend</Button>
                     <Button onClick={() => toggleSuspend(0,"unsuspend")}>Unsuspend</Button>
-                    <DeleteButton onClick={deleteStudent}>Delete</DeleteButton>
+                    <DeleteButton onClick={()=>{deleteStudent() ; deleteStudentFromSubject()}}>Delete</DeleteButton>
                 </StudentDetails>
             )}
         </Container>
@@ -271,7 +302,7 @@ const Button = styled.button`
     padding: 10px 20px;
     margin: 5px;
     // background-color: #4CAF50;
-    background: #ff8095;
+    background: #8080FF;
     color: white;
     border: none;
     border-radius: 4px;
@@ -280,7 +311,7 @@ const Button = styled.button`
 
     &:hover {
         // background-color: #45a049;
-        background: #e76880;
+        background: #9000FF;
     }
 `;
 

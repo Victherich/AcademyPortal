@@ -50,7 +50,7 @@ const SubHeading = styled.p`
 const Button = styled.a`
   padding: 15px 30px;
   background: white;
-  color: #FF8095;
+  color: #8080FF;
   border-radius: 5px;
   font-size: 1.2rem;
   text-decoration: none;
@@ -59,7 +59,7 @@ const Button = styled.a`
   position: relative;
 
   &:hover {
-    background: #FFD700;
+    background: rgba(128,0,128,0.8);
     color: white;
   }
 `;

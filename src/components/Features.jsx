@@ -14,7 +14,7 @@ const Title = styled.h2`
   font-size: 2rem;
   margin-bottom: 20px;
   text-align:center;
-  color:rgba(255,0,43,0.5);
+  color:#8080FF;
 `;
 
 const FeaturesGrid = styled.div`

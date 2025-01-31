@@ -177,6 +177,7 @@ import styled, {keyframes} from 'styled-components';
 import { useContext } from 'react';
 import { Context } from './Context';
 import Swal from 'sweetalert2';
+import StudentResult2 from './StudentResult2';
 
 
 
@@ -341,7 +342,7 @@ const Input = styled.input`
 const Button = styled.button`
   grid-column: 1 / -1;
   padding: 10px 20px;
-  background: #ff8095;
+  background: #8080FF;
   color: white;
   border: none;
   border-radius: 5px;
@@ -349,7 +350,7 @@ const Button = styled.button`
   cursor: pointer;
 
   &:hover {
-    background: #e76880;
+    background: #9000FF;
   }
 `;
 
@@ -389,7 +390,8 @@ const [studentData, setStudentData] = useState({});
 
       if (result.success) {
         setData(result.data);
-        console.log(result.data.subjects2_results[0]?.current_semester_id)
+        console.log(result.data)
+        // console.log(result.data.subjects2_results[0]?.current_semester_id)
         setStudentDetails(result.data[0]); // Assuming the student details are in the first element
 
         fetchSemesterById(result.data.subjects2_results[0]?.current_semester_id);
@@ -652,7 +654,7 @@ useEffect(()=>{
 </StudentInfoContainer>
 
 
-<TableContainer>
+{/* <TableContainer>
 <ScoreTable>
   <thead>
     <tr>
@@ -684,48 +686,19 @@ useEffect(()=>{
     })}
   </tbody>
 </ScoreTable>
-</TableContainer>
+</TableContainer> */}
 
-<OverallTotal>Overall Total: {overallTotal}</OverallTotal>
+{/* <OverallTotal>Overall Total: {overallTotal}</OverallTotal> */}
 
-{/* <Resultcard>
-    {data.subjects2_results.map((subject)=>( <Div>
-               <p>{subject.student_id}</p> 
-               <p>{subject.current_semester_id}</p>
-               <p>{subject.subject_1}</p>
-<p>{subject.subject_2}</p>
-<p>{subject.subject_3}</p>
-<p>{subject.subject_4}</p>
-<p>{subject.subject_5}</p>
-<p>{subject.subject_6}</p>
-<p>{subject.subject_7}</p>
-<p>{subject.subject_8}</p>
-<p>{subject.subject_9}</p>
-<p>{subject.subject_10}</p>
-<p>{subject.subject_11}</p>
-<p>{subject.subject_12}</p>
-<p>{subject.subject_13}</p>
-<p>{subject.subject_14}</p>
-<p>{subject.subject_15}</p>
-<p>{subject.subject_16}</p>
-<p>{subject.subject_17}</p>
-<p>{subject.subject_18}</p>
-<p>{subject.subject_19}</p>
-<p>{subject.subject_20}</p>
-<p>{subject.subject_21}</p>
-<p>{subject.subject_22}</p>
-<p>{subject.subject_23}</p>
-<p>{subject.subject_24}</p>
-<p>{subject.subject_25}</p>
-<p>{subject.subject_26}</p>
-<p>{subject.subject_27}</p>
-<p>{subject.subject_28}</p>
-<p>{subject.subject_29}</p>
-<p>{subject.subject_30}</p>
+<StudentResult2 
+assignments={data.assignments_results} 
+tests={data.tests_results} 
+exams={data.exams_results}
+studentId={studentId}
+classId={classId}
+semesterId={semesterId}/>
 
-            
-        </Div>))}
-    </Resultcard> */}
+
 
 
 </ScoreSheetContainer>
